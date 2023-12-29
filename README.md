@@ -4,6 +4,36 @@ Repository for the "*Activation Shaping for Domain Adaptation*" project
 
 <a href="https://didattica.polito.it/pls/portal30/gap.pkg_guide.viewGap?p_cod_ins=01URWOV&p_a_acc=2024&p_header=S&p_lang=IT&multi=N">Advanced Machine Learning</a> course 2023/2024 @ <a href="https://www.polito.it/">PoliTo</a>
 
+## Roadmap
+
+- [ ] Before starting
+  - [ ] Read paper [1]
+  - [ ] Read paper [2]
+  - [ ] Impostare dataset e ambiente di sviluppo utilizzando il repository [3]
+- [ ] Reproduce the baseline
+  - [ ] Train the unmodified feature extractor (ResNet-18) and the object classifier (one FC layer for category prediction), minimizing Cross-Entropy loss on the source domain
+  - [ ] Test model on target domain *Cartoon*
+  - [ ] Test model on target domain *Sketch*
+  - [ ] Test model on target domain *Photo*
+- [ ] Activation shaping module
+  - [ ] Implement custom activation shaping layer, using *forward_hook* function
+  - [ ] Insert activation shaping module after a layer in the base architecture
+- [ ] Random activation maps
+  - [ ] Define several versions of **M**, with different ratios of zeros and ones
+  - [ ] Train network on the source domain
+  - [ ] Test network on the target domain
+- [ ] Adapting activation maps across domains
+  - [ ] Define **M** using input samples from target domain
+  - [ ] Test network using samples from source domain as input. Collect results
+  - [ ] Compare results from previous point with labels of source domain
+- [ ] Binarization ablation
+  - [ ] Define **M** without binarization and multiply by **A**
+  - [ ] Binarize **M**
+  - [ ] Compute TopK values of **A**
+  - [ ] Set to 0 all elements of **M** that are not in the TopK of previous point
+  - [ ] Multiply **A** and **M**
+  - [ ] Reproduce points 2 and 3
+
 ## Project structure
 
 - *Material* - Project presentation and introduction to Domain Adaptation
