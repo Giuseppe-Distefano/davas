@@ -15,16 +15,21 @@ class BaseResNet18(nn.Module):
 ######################################################
 
 def get_activation_shaping_hook (mask):
-    
+
     # Activation Shaping Module as a function that shall be hooked via 'register_forward_hook'
+    # The hook captures mask variable from the parent scope, to update it,
+    # remove() the hook and register a new one with the updated mask.
     def activation_shaping_hook(module, input, output):
+
+        # binarize both activation map and mask using zero as threshold
         A_binary = torch.where(output<=0, torch.tensor(0.0), torch.tensor(1.0))
         M_binary = torch.where(mask<=0, torch.tensor(0.0), torch.tensor(1.0))
-        
+
+        # return the element-wise product of activation map and mask
         shaped_output = A_binary * M_binary
 
         return shaped_output
-    
+
     return activation_shaping_hook
 
 ######################################################
@@ -36,7 +41,27 @@ class ASHResNet18(nn.Module):
         self.resnet = resnet18(pretrained=False)
         self.resnet.fc = nn.Linear(self.resnet.fc.in_features, 7)
 
+    def register_activation_shaping_hook(self, layer_name, mask):
 
+        self.hook_handles = {}
+
+        hook = get_activation_shaping_hook(mask)
+
+        for name, module in self.resnet.named_modules():
+            if ((isinstance(module, nn.ReLU) or isinstance(module, nn.Conv2d)) and name == layer_name):
+                if not name in self.hook_handles:
+                    print('Insert activation shaping layer after ', name, module)
+                    self.hook_handles[name] = module.register_forward_hook(hook)
+
+    def remove_activation_shaping_hook(self, name):
+        if name in self.hook_handles and self.hook_handles[name] is not None:
+            handle = self.hook_handles[name]
+            handle.remove()
+
+    def forward(self, x):
+        return self.resnet(x)
+
+    '''
     def activation_shaping_hook (self, module, input, output):
         shaped_output = output * self.mask
         return shaped_output
@@ -109,5 +134,7 @@ class ASHResNet18(nn.Module):
 
     def forward(self, x):
         return self.resnet(x)
+        
+    '''
 
 ######################################################

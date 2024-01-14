@@ -29,25 +29,24 @@ def load_data():
     test_transform = get_transform(size=224, mean=mean, std=std, preprocess=False)
 
     # Load examples & create Dataset
-    #if CONFIG.experiment in ['baseline']:
-    if CONFIG.experiment in ['baseline', 'activation_shaping_last', 'activation_shaping_one', 'activation_shaping_three']:
+    if CONFIG.experiment in ['baseline', 'activation_shaping_last', 'activation_shaping_one', 'activation_shaping_three', 'random']:
         source_examples, target_examples = [], []
 
         # Load source
-        f = open(os.path.join(CONFIG.dataset_args['text_root'], f"{CONFIG.dataset_args['source_domain']}.txt"), 'r')
-        for line in f:
+        with open(os.path.join(CONFIG.dataset_args['root'], f"{CONFIG.dataset_args['source_domain']}.txt"), 'r') as f:
+            lines = f.readlines()
+        for line in lines:
             line = line.strip().split()
-            path, label = line[0].split('/')[0:], int(line[1])
-            source_examples.append((os.path.join(CONFIG.dataset_args['images_root'], *path), label))
-        f.close()
+            path, label = line[0].split('/')[1:], int(line[1])
+            source_examples.append((os.path.join(CONFIG.dataset_args['root'], *path), label))
 
         # Load target
-        f = open(os.path.join(CONFIG.dataset_args['text_root'], f"{CONFIG.dataset_args['target_domain']}.txt"), 'r')
-        for line in f:
+        with open(os.path.join(CONFIG.dataset_args['root'], f"{CONFIG.dataset_args['target_domain']}.txt"), 'r') as f:
+            lines = f.readlines()
+        for line in lines:
             line = line.strip().split()
-            path, label = line[0].split('/')[0:], int(line[1])
-            target_examples.append((os.path.join(CONFIG.dataset_args['images_root'], *path), label))
-        f.close()
+            path, label = line[0].split('/')[1:], int(line[1])
+            target_examples.append((os.path.join(CONFIG.dataset_args['root'], *path), label))
 
         train_dataset = BaseDataset(source_examples, transform=train_transform)
         test_dataset = BaseDataset(target_examples, transform=test_transform)

@@ -71,7 +71,7 @@ def train(model, data):
                     x, y = batch
                     x, y = x.to(CONFIG.device), y.to(CONFIG.device)
                     loss = F.cross_entropy(model(x), y)
-                elif CONFIG.expriment in ['random']:
+                elif CONFIG.experiment in ['random']:
                     x, y = batch
                     x, y = x.to(CONFIG.device), y.to(CONFIG.device)
                     loss = F.cross_entropy(model(x), y)
@@ -102,7 +102,25 @@ def train(model, data):
         torch.save(checkpoint, os.path.join('record', CONFIG.experiment_name, 'last.pth'))
 
 
-def main(mask_out_ratio=0.1):
+def create_random_mask(layer_name = 'layer4.1.relu', mask_out_ratio = 0.0):
+
+    layer_output_shapes = {
+        'layer4.1.relu': (512, 7, 7),
+        'layer4.0.relu': (512, 7, 7),
+        'layer3.1.relu': (256, 14, 14),
+        'layer3.0.relu': (256, 14, 14)
+    }
+
+    # create a mask tensor with a given ratio of zeros
+    print('mask_out_ratio: ',mask_out_ratio)
+    layer_output_shape = layer_output_shapes[layer_name]
+
+    rand_mat = torch.rand(layer_output_shape).to(CONFIG.device)
+    mask = torch.where(rand_mat <= mask_out_ratio, 0.0, 1.0).to(CONFIG.device)
+    return mask
+        
+        
+def main(mask_out_ratio=0.4):
     
     # Load dataset
     data = PACS.load_data()
@@ -125,7 +143,10 @@ def main(mask_out_ratio=0.1):
 
     elif CONFIG.experiment in ['random']:
         model = ASHResNet18()
-        model.define_network('ash_last', mask_out_ratio=mask_out_ratio)
+        random_mask = create_random_mask(layer_name = 'layer4.1.relu', mask_out_ratio = mask_out_ratio)
+        print('random_mask sum(): ', random_mask.sum())
+        model.register_activation_shaping_hook('layer4.1.relu', random_mask)
+        # model.define_network('ash_last', mask_out_ratio=mask_out_ratio)        
 
     ######################################################
     

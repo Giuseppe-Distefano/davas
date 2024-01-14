@@ -1,6 +1,9 @@
 network_type=${1}
 target_domain=${2}
 
+echo "Work in progress ..."
+exit
+
 python main.py \
 --experiment=${network_type} \
 --experiment_name=${network_type}/${target_domain}/ \
