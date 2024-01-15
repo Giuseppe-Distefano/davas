@@ -20,6 +20,8 @@ def get_activation_shaping_hook (mask):
     # The hook captures mask variable from the parent scope, to update it,
     # remove() the hook and register a new one with the updated mask.
     def activation_shaping_hook(module, input, output):
+        
+        # print('ASH module registered on: ', module, 'mask shape: ', mask.shape, 'mask sum(): ', mask.sum())
 
         # binarize both activation map and mask using zero as threshold
         A_binary = torch.where(output<=0, torch.tensor(0.0), torch.tensor(1.0))
@@ -40,11 +42,10 @@ class ASHResNet18(nn.Module):
         super(ASHResNet18, self).__init__()
         self.resnet = resnet18(pretrained=False)
         self.resnet.fc = nn.Linear(self.resnet.fc.in_features, 7)
-
-    def register_activation_shaping_hook(self, layer_name, mask):
-
+        
         self.hook_handles = {}
 
+    def register_activation_shaping_hook(self, layer_name, mask):
         hook = get_activation_shaping_hook(mask)
 
         for name, module in self.resnet.named_modules():
