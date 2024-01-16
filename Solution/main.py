@@ -105,14 +105,32 @@ def train(model, data):
 def create_random_mask(layer_name = 'layer4.1.relu', mask_out_ratio = 0.0):
 
     layer_output_shapes = {
+        'layer1.0.conv1': (64, 56, 56),
+        'layer1.0.relu': (64, 56, 56),
+        'layer1.0.conv2': (64, 56, 56),
+        'layer1.1.conv1': (64, 56, 56),
+        'layer1.1.bn1': (64, 56, 56),
+        'layer1.1.relu': (64, 56, 56),
+        'layer1.1.conv2': (64, 56, 56),
+        'layer1.1.bn2': (64, 56, 56),
+        'layer2.0.conv1': (128, 28, 28),
+        'layer2.0.relu': (128, 28, 28),
+        'layer2.0.conv2': (128, 28, 28),
+        'layer2.1.conv1': (128, 28, 28),
+        'layer2.1.relu': (128, 28, 28),
+        'layer2.1.conv2': (128, 28, 28),
+        'layer3.0.conv1': (256, 14, 14),
         'layer3.0.relu': (256, 14, 14),
+        'layer3.0.conv2': (256, 14, 14),
         'layer3.1.conv1': (256, 14, 14),
         'layer3.1.relu': (256, 14, 14),
         'layer3.1.conv2': (256, 14, 14),
         'layer4.0.conv1': (512, 7, 7),
         'layer4.0.relu': (512, 7, 7),
         'layer4.0.conv2': (512, 7, 7),
-        'layer4.1.relu': (512, 7, 7)
+        'layer4.1.conv1': (512, 7, 7),
+        'layer4.1.relu': (512, 7, 7),
+        'layer4.1.conv2': (512, 7, 7)
     }
 
     # create a mask tensor with a given ratio of zeros
@@ -122,9 +140,10 @@ def create_random_mask(layer_name = 'layer4.1.relu', mask_out_ratio = 0.0):
     rand_mat = torch.rand(layer_output_shape).to(CONFIG.device)
     mask = torch.where(rand_mat <= mask_out_ratio, 0.0, 1.0).to(CONFIG.device)
     return mask
+       
         
-        
-def main(mask_out_ratio=0.4):
+# def main(mask_out_ratio=0.4):
+def main():    
     
     # Load dataset
     data = PACS.load_data()
@@ -147,8 +166,9 @@ def main(mask_out_ratio=0.4):
 
     elif CONFIG.experiment in ['random']:
         model = ASHResNet18()
-        # module_placement = ['layer4.1.relu']
-        module_placement = ['layer3.1.conv2', 'layer4.0.conv2']
+        module_placement = ['layer4.1.relu']
+        # module_placement = ['layer3.1.conv2', 'layer4.0.conv2']
+        mask_out_ratio = CONFIG.experiment_args['mask_out_ratio']
 
         for layer_name in module_placement:
             random_mask = create_random_mask(layer_name = layer_name, mask_out_ratio = mask_out_ratio)
@@ -172,6 +192,7 @@ if __name__ == '__main__':
 
     # Parse arguments
     args = parse_arguments()
+    print(args)
     CONFIG.update(vars(args))
 
     # Setup output directory

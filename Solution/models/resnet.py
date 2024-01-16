@@ -40,7 +40,8 @@ def get_activation_shaping_hook (mask):
 class ASHResNet18(nn.Module):
     def __init__(self):
         super(ASHResNet18, self).__init__()
-        self.resnet = resnet18(pretrained=False)
+        # self.resnet = resnet18(pretrained=False)
+        self.resnet = resnet18(weights=ResNet18_Weights)
         self.resnet.fc = nn.Linear(self.resnet.fc.in_features, 7)
         
         self.hook_handles = {}
@@ -49,7 +50,7 @@ class ASHResNet18(nn.Module):
         hook = get_activation_shaping_hook(mask)
 
         for name, module in self.resnet.named_modules():
-            if ((isinstance(module, nn.ReLU) or isinstance(module, nn.Conv2d)) and name == layer_name):
+            if ((isinstance(module, nn.ReLU) or isinstance(module, nn.Conv2d) or isinstance(module, nn.BatchNorm2d)) and name == layer_name):
                 if not name in self.hook_handles:
                     print('Insert activation shaping layer after ', name, module)
                     self.hook_handles[name] = module.register_forward_hook(hook)
