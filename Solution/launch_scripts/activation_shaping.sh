@@ -1,7 +1,7 @@
 network_type=${1}
 target_domain=${2}
 
-echo "Work in progress ..."
+echo "Use random.sh, setting the desired module_placement."
 exit
 
 python main.py \

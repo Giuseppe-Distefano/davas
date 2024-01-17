@@ -166,8 +166,9 @@ def main():
 
     elif CONFIG.experiment in ['random']:
         model = ASHResNet18()
-        module_placement = ['layer4.1.relu']
+        # module_placement = ['layer4.1.relu']
         # module_placement = ['layer3.1.conv2', 'layer4.0.conv2']
+        module_placement = CONFIG.experiment_args['module_placement']
         mask_out_ratio = CONFIG.experiment_args['mask_out_ratio']
 
         for layer_name in module_placement:
