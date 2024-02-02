@@ -1,7 +1,7 @@
 import torch
 import os
 import torchvision.transforms as T
-from dataset.utils import BaseDataset #, DomainAdaptationDataset, DomainGeneralizationDataset
+from dataset.utils import BaseDataset, DomainAdaptationDataset#, DomainGeneralizationDataset
 from dataset.utils import SeededDataLoader
 
 from globals import CONFIG
@@ -28,32 +28,34 @@ def load_data():
     train_transform = get_transform(size=224, mean=mean, std=std, preprocess=True)
     test_transform = get_transform(size=224, mean=mean, std=std, preprocess=False)
 
-    # Load examples & create Dataset
-    if CONFIG.experiment in ['baseline', 'activation_shaping_last', 'activation_shaping_one', 'activation_shaping_three', 'random']:
-        source_examples, target_examples = [], []
-
+    # Load examples
+    source_examples, target_examples = [], []
+    if CONFIG.experiment in ['baseline', 'random', 'domain_adaptation']:
         # Load source
-        with open(os.path.join(CONFIG.dataset_args['root'], f"{CONFIG.dataset_args['source_domain']}.txt"), 'r') as f:
-            lines = f.readlines()
-        for line in lines:
+        f = open(os.path.join(CONFIG.dataset_args['text_root'], f"{CONFIG.dataset_args['source_domain']}.txt"), 'r')
+        for line in f:
             line = line.strip().split()
-            path, label = line[0].split('/')[1:], int(line[1])
-            source_examples.append((os.path.join(CONFIG.dataset_args['root'], *path), label))
+            path, label = line[0].split('/')[0:], int(line[1])
+            source_examples.append((os.path.join(CONFIG.dataset_args['images_root'], *path), label))
+        f.close()
 
         # Load target
-        with open(os.path.join(CONFIG.dataset_args['root'], f"{CONFIG.dataset_args['target_domain']}.txt"), 'r') as f:
-            lines = f.readlines()
-        for line in lines:
+        f = open(os.path.join(CONFIG.dataset_args['text_root'], f"{CONFIG.dataset_args['target_domain']}.txt"), 'r')
+        for line in f:
             line = line.strip().split()
-            path, label = line[0].split('/')[1:], int(line[1])
-            target_examples.append((os.path.join(CONFIG.dataset_args['root'], *path), label))
+            path, label = line[0].split('/')[0:], int(line[1])
+            target_examples.append((os.path.join(CONFIG.dataset_args['images_root'], *path), label))
+        f.close()
 
+    # create Dataset object for the baseline and the Random Maps Ablation experiments
+    if CONFIG.experiment in ['baseline', 'random']:
         train_dataset = BaseDataset(source_examples, transform=train_transform)
         test_dataset = BaseDataset(target_examples, transform=test_transform)
 
-    ######################################################
-    #elif... TODO: Add here how to create the Dataset object for the other experiments
-
+    # create Dataset object for the Domain Adaptation experiments
+    if CONFIG.experiment in ['domain_adaptation']:
+        train_dataset = DomainAdaptationDataset(source_examples, target_examples, transform=train_transform)
+        test_dataset = BaseDataset(target_examples, transform=test_transform)
 
     ######################################################
 
