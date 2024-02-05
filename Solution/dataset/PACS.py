@@ -32,20 +32,20 @@ def load_data():
     source_examples, target_examples = [], []
     if CONFIG.experiment in ['baseline', 'random', 'domain_adaptation']:
         # Load source
-        f = open(os.path.join(CONFIG.dataset_args['text_root'], f"{CONFIG.dataset_args['source_domain']}.txt"), 'r')
-        for line in f:
+        with open(os.path.join(CONFIG.dataset_args['root'], f"{CONFIG.dataset_args['source_domain']}.txt"), 'r') as f:
+            lines = f.readlines()
+        for line in lines:
             line = line.strip().split()
-            path, label = line[0].split('/')[0:], int(line[1])
-            source_examples.append((os.path.join(CONFIG.dataset_args['images_root'], *path), label))
-        f.close()
+            path, label = line[0].split('/')[1:], int(line[1])
+            source_examples.append((os.path.join(CONFIG.dataset_args['root'], *path), label))
 
         # Load target
-        f = open(os.path.join(CONFIG.dataset_args['text_root'], f"{CONFIG.dataset_args['target_domain']}.txt"), 'r')
-        for line in f:
+        with open(os.path.join(CONFIG.dataset_args['root'], f"{CONFIG.dataset_args['target_domain']}.txt"), 'r') as f:
+            lines = f.readlines()
+        for line in lines:
             line = line.strip().split()
-            path, label = line[0].split('/')[0:], int(line[1])
-            target_examples.append((os.path.join(CONFIG.dataset_args['images_root'], *path), label))
-        f.close()
+            path, label = line[0].split('/')[1:], int(line[1])
+            target_examples.append((os.path.join(CONFIG.dataset_args['root'], *path), label))
 
     # create Dataset object for the baseline and the Random Maps Ablation experiments
     if CONFIG.experiment in ['baseline', 'random']:

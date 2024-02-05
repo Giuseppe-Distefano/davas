@@ -35,7 +35,7 @@ def evaluate(model, data):
     accuracy = acc_meter.compute()
     loss = loss[0] / loss[1]
     logging.info(f'Accuracy: {100 * accuracy:.2f} - Loss: {loss}')
-    print(f'Accuracy: {100 * accuracy:.2f} - Loss: {loss} \n')
+    # print(f'Accuracy: {100 * accuracy:.2f} - Loss: {loss} \n')
 
 
 def train(model, data):
@@ -66,21 +66,15 @@ def train(model, data):
                     x, y = batch
                     x, y = x.to(CONFIG.device), y.to(CONFIG.device)
                     loss = F.cross_entropy(model(x), y)
-
-                ######################################################
-
                 elif CONFIG.experiment in ['random']:
                     x, y = batch
                     x, y = x.to(CONFIG.device), y.to(CONFIG.device)
                     loss = F.cross_entropy(model(x), y)
-
                 elif CONFIG.experiment in ['domain_adaptation']:
                     src_x, src_y, targ_x = batch
                     x, y = src_x.to(CONFIG.device), src_y.to(CONFIG.device)
                     targ_x = targ_x.to(CONFIG.device)
                     loss = F.cross_entropy(model(x, targ_x=targ_x), y)
-
-                ######################################################
 
             # Optimization step
             scaler.scale(loss / CONFIG.grad_accum_steps).backward()
@@ -161,39 +155,6 @@ def main ():
     else:
         evaluate(model, data['test'])
 
-       
-        
-# def main(mask_out_ratio=0.4):
-def main():    
-    
-    # Load dataset
-    data = PACS.load_data()
-
-    # Load model
-    if CONFIG.experiment in ['baseline']:
-        model = BaseResNet18()
-
-    ######################################################
-    
-    elif CONFIG.experiment in ['random']:
-        model = ASHResNet18()
-        module_placement = CONFIG.experiment_args['module_placement']
-        mask_out_ratio = CONFIG.experiment_args['mask_out_ratio']
-
-        for layer_name in module_placement:
-            random_mask = create_random_mask(layer_name = layer_name, mask_out_ratio = mask_out_ratio)
-            print('random_mask sum(): ', random_mask.sum())
-            model.register_activation_shaping_hook(layer_name, random_mask)      
-
-    ######################################################
-    
-    model.to(CONFIG.device)
-
-    if not CONFIG.test_only:
-        train(model, data)
-    else:
-        evaluate(model, data['test'])
-    
 
 if __name__ == '__main__':
     warnings.filterwarnings('ignore', category=UserWarning)

@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import Dataset, DataLoader
 import torchvision.transforms as T
-from torchvision.datasets import CIFAR10
+# from torchvision.datasets import CIFAR10
 
 import numpy as np
 import random
