@@ -72,9 +72,22 @@ def train(model, data):
                     loss = F.cross_entropy(model(x), y)
                 elif CONFIG.experiment in ['domain_adaptation']:
                     src_x, src_y, targ_x = batch
-                    x, y = src_x.to(CONFIG.device), src_y.to(CONFIG.device)
+                    src_x, src_y = src_x.to(CONFIG.device), src_y.to(CONFIG.device)
                     targ_x = targ_x.to(CONFIG.device)
-                    loss = F.cross_entropy(model(x, targ_x=targ_x), y)
+                    
+                    module_placement = CONFIG.experiment_args['module_placement']
+                    
+                    # Register hook(s) to store the target domain activation maps and perform a forward pass
+                    model.eval()
+                    model.register_extract_activation_map_hooks(module_placement)
+                    model(targ_x)
+                    model.remove_extract_activation_map_hooks()
+                    model.train()
+                    
+                    # Register the Activation Shaping hook(s) and perform a forward pass (source domain images)
+                    model.register_activation_shaping_hooks()
+                    loss = F.cross_entropy(model(src_x), src_y)
+                    model.remove_activation_shaping_hooks()
 
             # Optimization step
             scaler.scale(loss / CONFIG.grad_accum_steps).backward()
@@ -143,8 +156,9 @@ def main ():
             model.register_activation_shaping_hook(layer_name, random_mask)
 
     elif CONFIG.experiment in ['domain_adaptation']:
-        module_placement = CONFIG.experiment_args['module_placement']
-        model = ASHResNet18DomainAdaptation(module_placement)
+        # module_placement = CONFIG.experiment_args['module_placement']
+        # model = ASHResNet18DomainAdaptation(module_placement)
+        model = ASHResNet18DomainAdaptation()
 
     ######################################################
 
