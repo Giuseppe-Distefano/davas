@@ -58,6 +58,20 @@ def train(model, data):
         model.train()
 
         for batch_idx, batch in enumerate(tqdm(data['train'])):
+            
+            # use a separate invocation of autocast for every forward pass.
+            with torch.autocast(device_type=CONFIG.device, dtype=torch.float16, enabled=True):
+                if CONFIG.experiment in ['domain_adaptation']:
+                    # Register hook(s) to store the target domain activation maps and perform a forward pass
+                    model.eval()
+                    src_x, src_y, targ_x = batch
+                    targ_x = targ_x.to(CONFIG.device)
+                    module_placement = CONFIG.experiment_args['module_placement']
+                    model.register_extract_activation_map_hooks(module_placement)
+                    with torch.no_grad():
+                        model(targ_x)
+                    model.remove_extract_activation_map_hooks()
+                    model.train()
 
             # Compute loss
             with torch.autocast(device_type=CONFIG.device, dtype=torch.float16, enabled=True):
@@ -73,17 +87,6 @@ def train(model, data):
                 elif CONFIG.experiment in ['domain_adaptation']:
                     src_x, src_y, targ_x = batch
                     src_x, src_y = src_x.to(CONFIG.device), src_y.to(CONFIG.device)
-                    targ_x = targ_x.to(CONFIG.device)
-                    
-                    module_placement = CONFIG.experiment_args['module_placement']
-                    
-                    # Register hook(s) to store the target domain activation maps and perform a forward pass
-                    model.eval()
-                    model.register_extract_activation_map_hooks(module_placement)
-                    model(targ_x)
-                    model.remove_extract_activation_map_hooks()
-                    model.train()
-                    
                     # Register the Activation Shaping hook(s) and perform a forward pass (source domain images)
                     model.register_activation_shaping_hooks()
                     loss = F.cross_entropy(model(src_x), src_y)
