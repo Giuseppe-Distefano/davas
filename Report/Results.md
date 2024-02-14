@@ -188,3 +188,86 @@
 | 3.4.1 | Art Painting &righarrow; Cartoon | 18.26 | 0.0295330 |
 | 3.4.2 | Art Painting &righarrow; Sketch | 19.25 | 0.051066 |
 | 3.4.3 | Art Painting &righarrow; Photo | 23.29 | 0.026932 |
+
+
+
+# Extension 2- Binary Ablation
+
+## Point1 reproducing point 2
+![Network 4, ASH module at layer2.1.conv2](./images/n4.png)
+### layer4.1.conv2
+| Source &rightarrow; Target | Accuracy | Loss |
+ | :---: | :---: | :---: |
+ | Art Painting &righarrow; Cartoon | 45.65 | 0.0113826 |
+ | Art Painting &righarrow; Sketch | 32.73| 0.0158096 |
+ | Art Painting &righarrow; Photo | 92.63 | 0.00239498 |
+
+ ### layer2.1.conv2
+| Source &rightarrow; Target | Accuracy | Loss |
+ | :---: | :---: | :---: |
+ | Art Painting &righarrow; Cartoon | 54.65 | 0.01061 |
+ | Art Painting &righarrow; Sketch | 40.67| 0.015035 |
+ | Art Painting &righarrow; Photo | 95.39 | 0.0011936 |
+
+  ### layer3.1.conv2
+| Source &rightarrow; Target | Accuracy | Loss |
+ | :---: | :---: | :---: |
+ | Art Painting &righarrow; Cartoon | 53.54 | 0.0106167 |
+ | Art Painting &righarrow; Sketch | 36.96| 0.0155487 |
+ | Art Painting &righarrow; Photo | 95.33 | 0.001214 |
+
+  ### layer2.1.conv2 and layer3.1.conv2
+| Source &rightarrow; Target | Accuracy | Loss |
+ | :---: | :---: | :---: |
+ | Art Painting &righarrow; Cartoon | 54.27 | 0.0106167 |
+ | Art Painting &righarrow; Sketch | 39.42| 0.0155487 |
+ | Art Painting &righarrow; Photo | 94.67 | 0.0013158 |
+
+  ### All layers
+| Source &rightarrow; Target | Accuracy | Loss |
+ | :---: | :---: | :---: |
+ | Art Painting &righarrow; Cartoon | 20.35 | 0.0159648 |
+ | Art Painting &righarrow; Sketch | 19.85| 0.01573 |
+ | Art Painting &righarrow; Photo | 44.25 | 0.00131327 |
+
+   ### Every 3 layers
+| Source &rightarrow; Target | Accuracy | Loss |
+ | :---: | :---: | :---: |
+ | Art Painting &righarrow; Cartoon | 41.38 | 0.01238 |
+ | Art Painting &righarrow; Sketch | 22.47| 0.016865 |
+ | Art Painting &righarrow; Photo | 80.18 | 0.056895 |
+
+## Point1 reproducing point 3
+![Network 4, ASH module at layer2.1.conv2](./images/n4.png)
+### layer2.0.conv2 and layer3.1.conv2
+| Source &rightarrow; Target | Accuracy | Loss |
+ | :---: | :---: | :---: |
+ | Art Painting &righarrow; Cartoon | 10.71 | 0.0200 |
+ | Art Painting &righarrow; Sketch | 21.35| 0.01780 |
+ | Art Painting &righarrow; Photo | 12.75 | 0.02169 |
+
+ ### layer2.1.conv2 and layer3.0.conv2
+| Source &rightarrow; Target | Accuracy | Loss |
+ | :---: | :---: | :---: |
+ | Art Painting &righarrow; Cartoon | 16.55 | 0.0171679 |
+ | Art Painting &righarrow; Sketch | 19.55| 0.0194581 |
+ | Art Painting &righarrow; Photo | 28.98 | 0.016097 |
+
+  ### layer1.1.conv2 and layer2.1.conv2
+| Source &rightarrow; Target | Accuracy | Loss |
+ | :---: | :---: | :---: |
+ | Art Painting &righarrow; Cartoon | 18.64 | 0.030179 |
+ | Art Painting &righarrow; Sketch | 19.65| 0.04557 |
+ | Art Painting &righarrow; Photo | 23.71 | 0.020670 |
+
+  ### layer2.1.conv2
+| Source &rightarrow; Target | Accuracy | Loss |
+ | :---: | :---: | :---: |
+ | Art Painting &righarrow; Cartoon | 16.98 | 0.0231924 |
+ | Art Painting &righarrow; Sketch | 22.60| 0.022627 |
+ | Art Painting &righarrow; Photo | 36.77 | 0.002025 |
+
+
+
+
+
