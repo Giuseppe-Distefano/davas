@@ -83,7 +83,12 @@ def train(model, data):
                 elif CONFIG.experiment in ['random']:
                     x, y = batch
                     x, y = x.to(CONFIG.device), y.to(CONFIG.device)
+                    # Randomly turn off some outputs of each layer 
+                    module_placement = CONFIG.experiment_args['module_placement']
+                    mask_out_ratio = CONFIG.experiment_args['mask_out_ratio']
+                    model.register_random_activation_maps_hooks(module_placement, mask_out_ratio)
                     loss = F.cross_entropy(model(x), y)
+                    model.remove_random_activation_maps_hooks()
                 elif CONFIG.experiment in ['domain_adaptation']:
                     src_x, src_y, targ_x = batch
                     src_x, src_y = src_x.to(CONFIG.device), src_y.to(CONFIG.device)
@@ -115,7 +120,7 @@ def train(model, data):
         }
         torch.save(checkpoint, os.path.join('record', CONFIG.experiment_name, 'last.pth'))
 
-
+'''
 layer_output_shapes = {
     'layer1.0.conv1': (64, 56, 56),         'layer1.0.relu': (64, 56, 56),          'layer1.0.conv2': (64, 56, 56),
     'layer1.1.conv1': (64, 56, 56),         'layer1.1.bn1': (64, 56, 56),           'layer1.1.relu': (64, 56, 56),          'layer1.1.conv2': (64, 56, 56),         'layer1.1.bn2': (64, 56, 56),
@@ -127,7 +132,6 @@ layer_output_shapes = {
     'layer4.1.conv1': (512, 7, 7),          'layer4.1.relu': (512, 7, 7),           'layer4.1.conv2': (512, 7, 7)
 }
 
-
 def create_random_mask(layer_name = 'layer4.1.conv2', mask_out_ratio = 0.0):
     # create a mask tensor with a given ratio of zeros
     print('mask_out_ratio: ',mask_out_ratio)
@@ -136,7 +140,7 @@ def create_random_mask(layer_name = 'layer4.1.conv2', mask_out_ratio = 0.0):
     rand_mat = torch.rand(layer_output_shape).to(CONFIG.device)
     mask = torch.where(rand_mat <= mask_out_ratio, 0.0, 1.0).to(CONFIG.device)
     return mask
-
+'''
 
 def main ():
     # Load dataset
@@ -149,6 +153,7 @@ def main ():
     ######################################################
 
     elif CONFIG.experiment in ['random']:
+        '''
         model = ASHResNet18()
         module_placement = CONFIG.experiment_args['module_placement']
         mask_out_ratio = CONFIG.experiment_args['mask_out_ratio']
@@ -157,6 +162,8 @@ def main ():
             random_mask = create_random_mask(layer_name = layer_name, mask_out_ratio = mask_out_ratio)
             print('layer_name', layer_name, 'random_mask sum(): ', random_mask.sum())
             model.register_activation_shaping_hook(layer_name, random_mask)
+        '''
+        model = ASHResNet18()
 
     elif CONFIG.experiment in ['domain_adaptation']:
         # module_placement = CONFIG.experiment_args['module_placement']
