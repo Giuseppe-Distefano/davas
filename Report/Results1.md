@@ -162,3 +162,62 @@
 | 1.1.16 | layer4.1.conv2 | -09.08 |
 
 ### 1.2 - Two Activation Shaping modules
+
+#### 1.2.1 - ASH module after layer1.1.conv2 and layer2.1.conv2
+
+| Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1.2.1.1 | 0.5 | Cartoon | _____ | _______ | ______ |
+| 1.2.1.2 | 0.5 | Sketch  | _____ | _______ | ______ |
+| 1.2.1.3 | 0.5 | Photo   | _____ | _______ | ______ |
+
+#### 1.2.2 - ASH module after layer1.1.conv2 and layer3.0.conv1
+
+| Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1.2.2.1 | 0.5 | Cartoon | _____ | _______ | ______ |
+| 1.2.2.2 | 0.5 | Sketch  | _____ | _______ | ______ |
+| 1.2.2.3 | 0.5 | Photo   | _____ | _______ | ______ |
+
+#### 1.2.3 - ASH module after layer1.1.conv2 and layer3.1.conv2
+
+| Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1.2.3.1 | 0.5 | Cartoon | _____ | _______ | ______ |
+| 1.2.3.2 | 0.5 | Sketch  | _____ | _______ | ______ |
+| 1.2.3.3 | 0.5 | Photo   | _____ | _______ | ______ |
+
+#### 1.2.4 - ASH module after layer2.1.conv2 and layer3.0.conv1
+
+| Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1.2.4.1 | 0.5 | Cartoon | _____ | _______ | ______ |
+| 1.2.4.2 | 0.5 | Sketch  | _____ | _______ | ______ |
+| 1.2.4.3 | 0.5 | Photo   | _____ | _______ | ______ |
+
+#### 1.2.5 - ASH module after layer2.1.conv2 and layer3.1.conv2
+
+| Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1.2.5.1 | 0.5 | Cartoon | _____ | _______ | ______ |
+| 1.2.5.2 | 0.5 | Sketch  | _____ | _______ | ______ |
+| 1.2.5.3 | 0.5 | Photo   | _____ | _______ | ______ |
+
+#### 1.2.6 - ASH module after layer3.0.conv1 and layer3.1.conv2
+
+| Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1.2.6.1 | 0.5 | Cartoon | _____ | _______ | ______ |
+| 1.2.6.2 | 0.5 | Sketch  | _____ | _______ | ______ |
+| 1.2.6.3 | 0.5 | Photo   | _____ | _______ | ______ |
+
+#### Average improvements
+
+| Experiment | Placement | Avg Improvement |
+| :---: | :---: | :---: |
+| 1.2.1 | layer1.1.conv2, layer2.1.conv2 | ______ |
+| 1.2.2 | layer1.1.conv2, layer3.0.conv1 | ______ |
+| 1.2.3 | layer1.1.conv2, layer3.1.conv2 | ______ |
+| 1.2.4 | layer2.1.conv2, layer3.0.conv1 | ______ |
+| 1.2.5 | layer2.1.conv2, layer2.1.conv2 | ______ |
+| 1.2.6 | layer3.0.conv1, layer3.1.conv2 | ______ |
