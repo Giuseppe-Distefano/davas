@@ -13,28 +13,6 @@ class BaseResNet18(nn.Module):
         return self.resnet(x)
 
 ######################################################
-'''
-def get_activation_shaping_hook (mask):
-
-    # Activation Shaping Module as a function that shall be hooked via 'register_forward_hook'
-    # The hook captures mask variable from the parent scope, to update it,
-    # remove() the hook and register a new one with the updated mask.
-
-    def activation_shaping_hook(module, input, output):
-
-        # print('ASH module registered on: ', module, 'mask shape: ', mask.shape, 'mask sum(): ', mask.sum())
-
-        # binarize both activation map and mask using zero as threshold
-        A_binary = torch.where(output<=0, torch.tensor(0.0), torch.tensor(1.0))
-        M_binary = torch.where(mask<=0, torch.tensor(0.0), torch.tensor(1.0))
-
-        # return the element-wise product of activation map and mask
-        shaped_output = A_binary * M_binary
-        return shaped_output
-
-    return activation_shaping_hook
-'''
-######################################################
 
 # 'BaseResNet18' including the Activation Shaping Module
 class ASHResNet18(nn.Module):
@@ -44,23 +22,6 @@ class ASHResNet18(nn.Module):
         self.resnet.fc = nn.Linear(self.resnet.fc.in_features, 7)
 
         self.hook_handles = {}
-
-    '''
-    def register_activation_shaping_hook(self, layer_name, mask):
-        hook = get_activation_shaping_hook(mask)
-
-        for name, module in self.resnet.named_modules():
-            if (isinstance(module, nn.Conv2d) and name == layer_name):
-                if not name in self.hook_handles:
-                    print('Insert activation shaping layer after ', name, module)
-                    self.hook_handles[name] = module.register_forward_hook(hook)
-
-    def remove_activation_shaping_hook(self, name):
-        if name in self.hook_handles and self.hook_handles[name] is not None:
-            handle = self.hook_handles[name]
-            handle.remove()
-
-    '''
 
     def get_random_activation_map_hook(self, mask_out_ratio):
         
@@ -86,7 +47,8 @@ class ASHResNet18(nn.Module):
             
     def register_random_activation_maps_hooks(self, module_placement, mask_out_ratio):
         for layer_name, module in self.resnet.named_modules():
-            if (isinstance(module, nn.Conv2d) and layer_name in module_placement):
+            # if (isinstance(module, nn.Conv2d) and layer_name in module_placement):
+            if ((isinstance(module, nn.ReLU) or isinstance(module, nn.Conv2d)) and layer_name in module_placement):
                 print('Register a hook to perform Random Maps Ablation on layer ', layer_name, module)
                 hook = self.get_random_activation_map_hook(mask_out_ratio)
                 self.hook_handles[layer_name] = module.register_forward_hook(hook)
@@ -102,17 +64,11 @@ class ASHResNet18(nn.Module):
 ######################################################
     
 # 'BaseResNet18' including the Activation Shaping Module for Domain Adaptation
-class ASHResNet18DomainAdaptation(nn.Module):
+class DAResNet18(nn.Module):
     def __init__(self, module_placement=None):
-        super(ASHResNet18DomainAdaptation, self).__init__()
+        super(DAResNet18, self).__init__()
         self.resnet = resnet18(weights=ResNet18_Weights)
         self.resnet.fc = nn.Linear(self.resnet.fc.in_features, 7)
-
-        '''
-        self.module_placement = module_placement
-        if module_placement==[]:
-            self.module_placement = None
-        '''
 
         self.activation_maps = {}
         self.activation_map_hook_handles = {}

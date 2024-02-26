@@ -12,7 +12,7 @@ import numpy as np
 from parse_args import parse_arguments
 
 from dataset import PACS
-from models.resnet import BaseResNet18, ASHResNet18, ASHResNet18DomainAdaptation
+from models.resnet import BaseResNet18, ASHResNet18, DAResNet18
 
 from globals import CONFIG
 
@@ -153,22 +153,11 @@ def main ():
     ######################################################
 
     elif CONFIG.experiment in ['random']:
-        '''
-        model = ASHResNet18()
-        module_placement = CONFIG.experiment_args['module_placement']
-        mask_out_ratio = CONFIG.experiment_args['mask_out_ratio']
-
-        for layer_name in module_placement:
-            random_mask = create_random_mask(layer_name = layer_name, mask_out_ratio = mask_out_ratio)
-            print('layer_name', layer_name, 'random_mask sum(): ', random_mask.sum())
-            model.register_activation_shaping_hook(layer_name, random_mask)
-        '''
         model = ASHResNet18()
 
     elif CONFIG.experiment in ['domain_adaptation']:
         # module_placement = CONFIG.experiment_args['module_placement']
-        # model = ASHResNet18DomainAdaptation(module_placement)
-        model = ASHResNet18DomainAdaptation()
+        model = DAResNet18()
 
     ######################################################
 
