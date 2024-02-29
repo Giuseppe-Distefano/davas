@@ -23,6 +23,7 @@ class ASHResNet18(nn.Module):
 
         self.hook_handles = {}
 
+
     def get_random_activation_map_hook(self, mask_out_ratio):
         
         # Activation Shaping Module as a function that shall be hooked via 'register_forward_hook'
@@ -47,11 +48,11 @@ class ASHResNet18(nn.Module):
             
     def register_random_activation_maps_hooks(self, module_placement, mask_out_ratio):
         for layer_name, module in self.resnet.named_modules():
-            # if (isinstance(module, nn.Conv2d) and layer_name in module_placement):
-            if ((isinstance(module, nn.ReLU) or isinstance(module, nn.Conv2d)) and layer_name in module_placement):
-                print('Register a hook to perform Random Maps Ablation on layer ', layer_name, module)
-                hook = self.get_random_activation_map_hook(mask_out_ratio)
-                self.hook_handles[layer_name] = module.register_forward_hook(hook)
+            if ((isinstance(module, nn.ReLU) or isinstance(module, nn.Conv2d) or isinstance(module, nn.BatchNorm2d))):
+                if layer_name in module_placement:
+                    print('Register a hook to perform Random Maps Ablation on layer ', layer_name, module)
+                    hook = self.get_random_activation_map_hook(mask_out_ratio)
+                    self.hook_handles[layer_name] = module.register_forward_hook(hook)
 
     def remove_random_activation_maps_hooks(self):
         for layer_name, handle in self.hook_handles.items():
@@ -100,10 +101,11 @@ class DAResNet18(nn.Module):
     def register_extract_activation_map_hooks(self, module_placement):
         # Register hook(s) (1st hook) to store activation map
         for layer_name, module in self.resnet.named_modules():
-            if (isinstance(module, nn.Conv2d) and layer_name in module_placement):
-                print('Register a hook (1st) to store activation map of layer ', layer_name, module)
-                hook = self.get_extract_activation_map_hook(layer_name)
-                self.activation_map_hook_handles[layer_name] = module.register_forward_hook(hook)
+            if ((isinstance(module, nn.ReLU) or isinstance(module, nn.Conv2d) or isinstance(module, nn.BatchNorm2d))):
+                if layer_name in module_placement:
+                    print('Register a hook (1st) to store activation map of layer ', layer_name, module)
+                    hook = self.get_extract_activation_map_hook(layer_name)
+                    self.activation_map_hook_handles[layer_name] = module.register_forward_hook(hook)
 
     def remove_extract_activation_map_hooks(self):
         # Remove hook(s) used to store activation map
@@ -114,10 +116,11 @@ class DAResNet18(nn.Module):
     def register_activation_shaping_hooks(self):
         # Register the Activation Shaping Module hook(s) (2nd hook)
         for layer_name, module in self.resnet.named_modules():
-            if (isinstance(module, nn.Conv2d) and layer_name in self.activation_maps):
-                print('Register a hook (2nd) to perform Activation Shaping on layer ', layer_name, module)
-                hook = self.get_activation_shaping_hook(self.activation_maps[layer_name])
-                self.activation_shaping_hook_handles[layer_name] = module.register_forward_hook(hook)
+            if ((isinstance(module, nn.ReLU) or isinstance(module, nn.Conv2d) or isinstance(module, nn.BatchNorm2d))):
+                if layer_name in self.activation_maps:
+                    print('Register a hook (2nd) to perform Activation Shaping on layer ', layer_name, module)
+                    hook = self.get_activation_shaping_hook(self.activation_maps[layer_name])
+                    self.activation_shaping_hook_handles[layer_name] = module.register_forward_hook(hook)
 
     def remove_activation_shaping_hooks(self):
         # Remove hook(s) used to perform Activation Shaping
