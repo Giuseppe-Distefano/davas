@@ -227,7 +227,7 @@
 | 1.1.1 | layer1.0.conv1 | -11.75 |
 | 1.1.2 | layer1.0.relu | -49.14 |
 | 1.1.3 | layer1.0.conv2 | -10.91 |
-| 1.1.4 | layer1.1.conv1 | -12.38 |
+| **1.1.4** | **layer1.1.conv1** | -03.12 |
 | **1.1.5** | **layer1.1.bn1** | -04.30 |
 | 1.1.6 | layer1.1.relu | -28.30 |
 | **1.1.7** | **layer1.1.conv2** | -03.82 |
@@ -238,11 +238,11 @@
 | 1.1.12 | layer2.1.conv1 | -24.45 |
 | 1.1.13 | layer2.1.relu | -40.06 |
 | **1.1.14** | **layer2.1.conv2** | +02.05 |
-| **1.1.15** | **layer3.0.conv1** | -01.66 |
+| **1.1.15** | **layer3.0.conv1** | -05.68 |
 | 1.1.16 | layer3.0.relu | -21.39 |
 | 1.1.17 | layer3.0.conv2 | -23.60 |
 | 1.1.18 | layer3.1.conv1 | -10.64 |
-| 1.1.19 | layer3.1.relu | -22.63 |
+| 1.1.19 | layer3.1.relu | -19.30 |
 | **1.1.20** | **layer3.1.conv2** | -08.63 |
 | 1.1.21 | layer4.0.conv1 | -11.16 |
 | 1.1.22 | layer4.0.relu | -10.13 |
@@ -250,6 +250,8 @@
 | 1.1.24 | layer4.1.conv1 | -20.67 |
 | 1.1.25 | layer4.1.relu | -33.60 |
 | 1.1.26 | layer4.1.conv2 | -09.08 |
+
+We choose experiments with an average improvement better than -09.00.
 
 ### 1.2 - Two Activation Shaping modules
 
@@ -373,6 +375,46 @@
 | 1.2.15.2 | 0.5 | Sketch  | 33.19 | 0.01285 | -07.38 |
 | 1.2.15.3 | 0.5 | Photo   | 62.81 | 0.00819 | -33.06 |
 
+#### 1.2.16 - ASH module after layer1.1.bn1 and layer1.1.conv2
+
+| Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1.2.16.1 | 0.5 | Cartoon | ..... | ....... | ...... |
+| 1.2.16.2 | 0.5 | Sketch  | ..... | ....... | ...... |
+| 1.2.16.3 | 0.5 | Photo   | ..... | ....... | ...... |
+
+#### 1.2.17 - ASH module after layer1.1.bn1 and layer1.1.bn2
+
+| Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1.2.17.1 | 0.5 | Cartoon | ..... | ....... | ...... |
+| 1.2.17.2 | 0.5 | Sketch  | ..... | ....... | ...... |
+| 1.2.17.3 | 0.5 | Photo   | ..... | ....... | ...... |
+
+#### 1.2.18 - ASH module after layer1.1.bn1 and layer2.1.conv2
+
+| Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1.2.18.1 | 0.5 | Cartoon | ..... | ....... | ...... |
+| 1.2.18.2 | 0.5 | Sketch  | ..... | ....... | ...... |
+| 1.2.18.3 | 0.5 | Photo   | ..... | ....... | ...... |
+
+#### 1.2.19 - ASH module after layer1.1.bn1 and layer3.0.conv1
+
+| Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1.2.19.1 | 0.5 | Cartoon | ..... | ....... | ...... |
+| 1.2.19.2 | 0.5 | Sketch  | ..... | ....... | ...... |
+| 1.2.19.3 | 0.5 | Photo   | ..... | ....... | ...... |
+
+#### 1.2.20 - ASH module after layer1.1.bn1 and layer3.1.conv2
+
+| Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 1.2.20.1 | 0.5 | Cartoon | ..... | ....... | ...... |
+| 1.2.20.2 | 0.5 | Sketch  | ..... | ....... | ...... |
+| 1.2.20.3 | 0.5 | Photo   | ..... | ....... | ...... |
+
 #### Average improvements
 
 | Experiment | Placement | Avg Improvement |
@@ -381,7 +423,7 @@
 | 1.2.2 | layer1.1.bn1, layer1.1.bn2 | -05.08 |
 | **1.2.3** | **layer1.1.bn1, layer2.1.conv2** | -00.29 |
 | 1.2.4 | layer1.1.bn1, layer3.0.conv1 | -07.27 |
-| 1.2.5 | layer1.1.bn1, layer3.1.conv2 | -09.92 |
+| 1.2.5 | layer1.1.bn1, layer3.1.conv2 | -09.94 |
 | 1.2.6 | layer1.1.conv2, layer1.1.bn2 | -08.00 |
 | **1.2.7** | **layer1.1.conv2, layer2.1.conv2** | -03.75 |
 | 1.2.8 | layer1.1.conv2, layer3.0.conv1 | -07.16 |
@@ -392,6 +434,13 @@
 | 1.2.13 | layer2.1.conv2, layer3.0.conv1 | -15.08 |
 | 1.2.14 | layer2.1.conv2, layer3.1.conv2 | -17.83 |
 | 1.2.15 | layer3.0.conv1, layer3.1.conv2 | -15.14 |
+| 1.2.16 | layer1.1.bn1, layer1.1.conv2 | ...... |
+| 1.2.17 | layer1.1.bn1, layer1.1.bn2 | ...... |
+| 1.2.18 | layer1.1.bn1, layer2.1.conv2 | ...... |
+| 1.2.19 | layer1.1.bn1, layer3.0.conv1 | ...... |
+| 1.2.20 | layer1.1.bn1, layer3.1.conv2 | ...... |
+
+We choose experiments with an average improvement better than -05.00.
 
 ### 1.3 - Three Activation Shaping modules
 
@@ -507,6 +556,8 @@
 | 1.3.10 | layer1.1.conv2, layer2.1.conv2, layer3.1.conv2 | -23.46 |
 | 1.3.11 | layer1.1.bn2, layer2.1.conv2, layer3.0.conv1 | -12.54 |
 | 1.3.12 | layer1.1.bn2, layer2.1.conv2, layer3.1.conv2 | -23.16 |
+
+We choose experiments with an average improvement better than -09.00.
 
 ### 1.4 - Four Activation Shaping modules
 
