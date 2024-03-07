@@ -455,9 +455,9 @@
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 1.3.8.1 | 0.5 | Cartoon | ..... | ....... | ...... |
-| 1.3.8.2 | 0.5 | Sketch  | ..... | ....... | ...... |
-| 1.3.8.3 | 0.5 | Photo   | ..... | ....... | ...... |
+| 1.3.8.1 | 0.5 | Cartoon | 45.56 | 0.01307 | -08.96 |
+| 1.3.8.2 | 0.5 | Sketch  | 33.98 | 0.01431 | -06.59 |
+| 1.3.8.3 | 0.5 | Photo   | 66.35 | 0.00756 | -29.52 |
 
 #### 1.3.9 - ASH module after layer1.1.conv2, layer2.1.conv2, and layer3.0.conv1
 
@@ -487,9 +487,9 @@
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 1.3.12.1 | 0.5 | Cartoon | ..... | ....... | ...... |
-| 1.3.12.2 | 0.5 | Sketch  | ..... | ....... | ...... |
-| 1.3.12.3 | 0.5 | Photo   | ..... | ....... | ...... |
+| 1.3.12.1 | 0.5 | Cartoon | 44.33 | 0.01438 | -10.19 |
+| 1.3.12.2 | 0.5 | Sketch  | 22.91 | 0.01805 | -17.66 |
+| 1.3.12.3 | 0.5 | Photo   | 54.25 | 0.01148 | -41.62 |
 
 #### Average improvements
 
@@ -502,8 +502,8 @@
 | 1.3.5 | layer1.1.bn1, layer1.1.bn2, layer2.1.conv2 | -06.44 |
 | 1.3.6 | layer1.1.bn1, layer2.1.conv2, layer3.0.conv1 | -11.90 |
 | 1.3.7 | layer1.1.bn1, layer2.1.conv2, layer3.1.conv2 | -14.02 |
-| 1.3.8 | layer1.1.conv2, layer1.1.bn2, layer2.1.conv2 | ...... |
+| 1.3.8 | layer1.1.conv2, layer1.1.bn2, layer2.1.conv2 | -15.02 |
 | 1.3.9 | layer1.1.conv2, layer2.1.conv2, layer3.0.conv1 | -21.08 |
 | 1.3.10 | layer1.1.conv2, layer2.1.conv2, layer3.1.conv2 | -23.46 |
 | 1.3.11 | layer1.1.bn2, layer2.1.conv2, layer3.0.conv1 | -12.54 |
-| 1.3.12 | layer1.1.bn2, layer2.1.conv2, layer3.1.conv2 | ...... |
+| 1.3.12 | layer1.1.bn2, layer2.1.conv2, layer3.1.conv2 | -23.16 |
