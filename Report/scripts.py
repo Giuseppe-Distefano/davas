@@ -1,5 +1,12 @@
 input_filename = "ResultsProg.csv"
 
+num_sections = 4        # Sections in the notebook
+num_sub1 = 26           # Subsections in section 1
+num_sub2 = 15           # Subsections in section 2
+num_sub3 = 12           # Subsections in section 3
+num_sub4 = 8            # Subsections in section 4
+
+
 configurations = {}
 improvements = {}
 avg_improvements = {}
@@ -16,11 +23,34 @@ def import_data ():
     baseline2 = configurations["0.2"][1]
     baseline3 = configurations["0.3"][1]
 
-    # Comptue the improvement for each configuration with respect to the baseline
+    # Compute the improvement for each configuration with respect to the baseline
     for conf in configurations:
         if conf.endswith("1"): improvements[conf] = configurations[conf][1] - baseline1
         if conf.endswith("2"): improvements[conf] = configurations[conf][1] - baseline2
         elif conf.endswith("3"): improvements[conf] = configurations[conf][1] - baseline3
+
+    # Compute average improvement for each section
+    for i in range(1,num_sections+1):
+        if i==1:
+            for j in range(1,num_sub1+1):
+                section = "1." + str(i) + "." + str(j)
+                avg = compute_avg_improvement(section)
+                avg_improvements[section] = avg
+        elif i==2:
+            for j in range(1,num_sub2+1):
+                section = "1." + str(i) + "." + str(j)
+                avg = compute_avg_improvement(section)
+                avg_improvements[section] = avg
+        elif i==3:
+            for j in range(1,num_sub3+1):
+                section = "1." + str(i) + "." + str(j)
+                avg = compute_avg_improvement(section)
+                avg_improvements[section] = avg
+        elif i==4:
+            for j in range(1,num_sub4+1):
+                section = "1." + str(i) + "." + str(j)
+                avg = compute_avg_improvement(section)
+                avg_improvements[section] = avg
 
 
 # Compute the average improvement for a given section
@@ -29,36 +59,25 @@ def compute_avg_improvement (section):
     return avg_imp
 
 
-# Summarize average improvement for all sections
+# Print all improvements
 def show_improvements ():
-    for i in range(1,4):
-        if i==1:
-            for j in range(1,27):
-                section = "1." + str(i) + "." + str(j)
-                avg = compute_avg_improvement(section)
-                avg_improvements[section] = avg
-        elif i==2:
-            for j in range(1,16):
-                section = "1." + str(i) + "." + str(j)
-                avg = compute_avg_improvement(section)
-                avg_improvements[section] = avg
-        elif i==3:
-            for j in range(1,13):
-                section = "1." + str(i) + "." + str(j)
-                avg = compute_avg_improvement(section)
-                avg_improvements[section] = avg
+    for i in improvements: print(i, "\t\t", improvements[i])
 
-    for i in avg_improvements: print(i, avg_improvements[i])
+
+# Summarize average improvement for all sections
+def show_avg_improvements ():
+    for i in avg_improvements: print(i, "\t\t", avg_improvements[i])
 
 
 # Select the best subsections
 def top_k_subsections (k):
     top_k = sorted(avg_improvements, key=avg_improvements.get, reverse=True)[:k]
-    for i in top_k: print(i, avg_improvements[i])
+    for i in top_k: print(i, "\t\t", avg_improvements[i])
 
 
 # Main of the program
 if __name__=='__main__':
     import_data()
-    show_improvements()
-    #top_k_subsections(5)
+    #show_avg_improvements()
+    #show_improvements()
+    top_k_subsections(5)
