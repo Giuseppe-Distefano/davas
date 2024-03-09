@@ -5,7 +5,7 @@ num_sub1 = 26           # Subsections in section 1
 num_sub2 = 15           # Subsections in section 2
 num_sub3 = 12           # Subsections in section 3
 num_sub4 = 8            # Subsections in section 4
-
+num_sub5 = 4            # Subsections in section 5
 
 configurations = {}
 improvements = {}
@@ -48,6 +48,11 @@ def import_data ():
                 avg_improvements[section] = avg
         elif i==4:
             for j in range(1,num_sub4+1):
+                section = "1." + str(i) + "." + str(j)
+                avg = compute_avg_improvement(section)
+                avg_improvements[section] = avg
+        elif i==5:
+            for j in range(1,num_sub5+1):
                 section = "1." + str(i) + "." + str(j)
                 avg = compute_avg_improvement(section)
                 avg_improvements[section] = avg

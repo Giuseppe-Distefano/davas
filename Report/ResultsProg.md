@@ -601,23 +601,23 @@ We choose experiments with an average improvement better than -18.00.
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 1.5.1.1 | 0.5 | Cartoon | ..... | ....... | ...... |
-| 1.5.1.2 | 0.5 | Sketch  | ..... | ....... | ...... |
-| 1.5.1.3 | 0.5 | Photo   | ..... | ....... | ...... |
+| 1.5.1.1 | 0.5 | Cartoon | 36.56 | 0.01517 | -17.96 |
+| 1.5.1.2 | 0.5 | Sketch  | 36.98 | 0.01385 | -03.59 |
+| 1.5.1.3 | 0.5 | Photo   | 47.07 | 0.01148 | -48.80 |
 
 #### 1.5.2 - ASH module after layer1.1.bn1, layer1.1.conv2, layer1.1.bn2, layer2.1.conv2, and layer3.1.conv2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 1.5.2.1 | 0.5 | Cartoon | ..... | ....... | ...... |
-| 1.5.2.2 | 0.5 | Sketch  | ..... | ....... | ...... |
-| 1.5.2.3 | 0.5 | Photo   | ..... | ....... | ...... |
+| 1.5.2.1 | 0.5 | Cartoon | 29.05 | 0.01670 | -25.47 |
+| 1.5.2.2 | 0.5 | Sketch  | 23.21 | 0.01624 | -17.36 |
+| 1.5.2.3 | 0.5 | Photo   | 41.26 | 0.01592 | -54.61 |
 
 #### 1.5.3 - ASH module after layer1.1.bn1, layer1.1.conv2, layer1.1.bn2, layer3.0.conv1, and layer3.1.conv2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 1.5.3.1 | 0.5 | Cartoon | ..... | ....... | ...... |
+| 1.5.3.1 | 0.5 | Cartoon | 42.83 | 0.01432 | -11.69 |
 | 1.5.3.2 | 0.5 | Sketch  | ..... | ....... | ...... |
 | 1.5.3.3 | 0.5 | Photo   | ..... | ....... | ...... |
 
@@ -633,7 +633,7 @@ We choose experiments with an average improvement better than -18.00.
 
 | Experiment | Placement | Avg Improvement |
 | :---: | :---: | :---: |
-| 1.5.1 | layer1.1.bn1, layer1.1.conv2, layer1.1.bn2, layer2.1.conv2, layer3.0.conv1 | ...... |
-| 1.5.2 | layer1.1.bn1, layer1.1.conv2, layer1.1.bn2, layer2.1.conv2, layer3.1.conv2 | ...... |
+| 1.5.1 | layer1.1.bn1, layer1.1.conv2, layer1.1.bn2, layer2.1.conv2, layer3.0.conv1 | -23.45 |
+| 1.5.2 | layer1.1.bn1, layer1.1.conv2, layer1.1.bn2, layer2.1.conv2, layer3.1.conv2 | -32.48 |
 | 1.5.3 | layer1.1.bn1, layer1.1.conv2, layer1.1.bn2, layer3.0.conv1, layer3.1.conv2 | ...... |
 | 1.5.4 | layer1.1.bn1, layer1.1.bn2, layer2.1.conv2, layer3.0.conv1, layer3.1.conv2 | ...... |
