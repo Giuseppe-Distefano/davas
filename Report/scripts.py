@@ -1,6 +1,6 @@
 input_filename = "ResultsProg.csv"
 
-num_sections = 4        # Sections in the notebook
+num_sections = 5        # Sections in the notebook
 num_sub1 = 26           # Subsections in section 1
 num_sub2 = 15           # Subsections in section 2
 num_sub3 = 12           # Subsections in section 3
@@ -83,6 +83,6 @@ def top_k_subsections (k):
 # Main of the program
 if __name__=='__main__':
     import_data()
-    #show_avg_improvements()
+    show_avg_improvements()
     #show_improvements()
-    top_k_subsections(5)
+    #top_k_subsections(5)
