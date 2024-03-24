@@ -646,51 +646,51 @@ We choose experiments with an average improvement better than -18.00.
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.1.1.1 | 0.00 | Cartoon | ..... | ....... | ...... |
-| 2.1.1.2 | 0.00 | Sketch | ..... | ....... | ...... |
-| 2.1.1.3 | 0.00 | Photo | ..... | ....... | ...... |
+| 2.1.1.1 | 0.00 | Cartoon | 54.56 | 0.00988 | +00.04 |
+| 2.1.1.2 | 0.00 | Sketch | 49.12 | 0.01045 | +08.55 |
+| 2.1.1.3 | 0.00 | Photo | 76.71 | 0.00536 | -19.16 |
 
 #### 2.1.2 - ASH module after layer1.1.bn1 and layer2.1.conv2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.1.2.1 | 0.00 | Cartoon | ..... | ....... | ...... |
-| 2.1.2.2 | 0.00 | Sketch | ..... | ....... | ...... |
-| 2.1.2.3 | 0.00 | Photo | ..... | ....... | ...... |
+| 2.1.2.1 | 0.00 | Cartoon | 42.70 | 0.01253 | -11.82 |
+| 2.1.2.2 | 0.00 | Sketch | 42.40 | 0.01196 | +01.83 |
+| 2.1.2.3 | 0.00 | Photo | 68.14 | 0.00767 | -27.73 |
 
 #### 2.1.3 - ASH module after layer1.1.conv1
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.1.3.1 | 0.00 | Cartoon | ..... | ....... | ...... |
-| 2.1.3.2 | 0.00 | Sketch | ..... | ....... | ...... |
-| 2.1.3.3 | 0.00 | Photo | ..... | ....... | ...... |
+| 2.1.3.1 | 0.00 | Cartoon | 54.99 | 0.00998 | +00.47 |
+| 2.1.3.2 | 0.00 | Sketch | 33.04 | 0.01427 | -07.53 |
+| 2.1.3.3 | 0.00 | Photo | 82.81 | 0.00364 | -13.06 |
 
 #### 2.1.4 - ASH module after layer1.1.bn2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.1.4.1 | 0.00 | Cartoon | ..... | ....... | ...... |
-| 2.1.4.2 | 0.00 | Sketch | ..... | ....... | ...... |
-| 2.1.4.3 | 0.00 | Photo | ..... | ....... | ...... |
+| 2.1.4.1 | 0.00 | Cartoon | 46.97 | 0.01223 | -07.55 |
+| 2.1.4.2 | 0.00 | Sketch | 29.73 | 0.02048 | -10.84 |
+| 2.1.4.3 | 0.00 | Photo | 90.54 | 0.00264 | -05.33 |
 
 #### 2.1.5 - ASH module after layer1.1.bn2 and layer2.1.bn2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.1.5.1 | 0.00 | Cartoon | ..... | ....... | ...... |
-| 2.1.5.2 | 0.00 | Sketch | ..... | ....... | ...... |
-| 2.1.5.3 | 0.00 | Photo | ..... | ....... | ...... |
+| 2.1.5.1 | 0.00 | Cartoon | 35.07 | 0.01683 | -19.45 |
+| 2.1.5.2 | 0.00 | Sketch | 19.98 | 0.02203 | -20.59 |
+| 2.1.5.3 | 0.00 | Photo | 30.54 | 0.01607 | -65.33 |
 
 #### Average improvements
 
 | Experiment | Placement | Avg Improvement |
 | :---: | :---: | :---: |
-| 2.1.1 | layer2.1.conv2 | ...... |
-| 2.1.2 | layer1.1.bn1, layer2.1.conv2 | ...... |
-| 2.1.3 | layer1.1.conv1 | ...... |
-| 2.1.4 | layer1.1.bn2 | ...... |
-| 2.1.5 | layer1.1.bn2 and layer2.1.bn2 | ...... |
+| 2.1.1 | layer2.1.conv2 | -03.52 |
+| 2.1.2 | layer1.1.bn1, layer2.1.conv2 | -09.57 |
+| 2.1.3 | layer1.1.conv1 | -06.71 |
+| 2.1.4 | layer1.1.bn2 | -07.91 |
+| 2.1.5 | layer1.1.bn2 and layer2.1.bn2 | -35.12 |
 
 ### 2.2 - mor = 0.25
 
@@ -698,51 +698,51 @@ We choose experiments with an average improvement better than -18.00.
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.2.1.1 | 0.25 | Cartoon | ..... | ....... | ...... |
-| 2.2.1.2 | 0.25 | Sketch | ..... | ....... | ...... |
-| 2.2.1.3 | 0.25 | Photo | ..... | ....... | ...... |
+| 2.2.1.1 | 0.25 | Cartoon | 60.15 | 0.0087 | +05.63 |
+| 2.2.1.2 | 0.25 | Sketch | 51.31 | 0.01084 | +10.74 |
+| 2.2.1.3 | 0.25 | Photo | 84.25 | 0.00366 | -11.62 |
 
 #### 2.2.2 - ASH module after layer1.1.bn1 and layer2.1.conv2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.2.2.1 | 0.25 | Cartoon | ..... | ....... | ...... |
-| 2.2.2.2 | 0.25 | Sketch | ..... | ....... | ...... |
-| 2.2.2.3 | 0.25 | Photo | ..... | ....... | ...... |
+| 2.2.2.1 | 0.25 | Cartoon | 53.84 | 0.01018 | -00.68 |
+| 2.2.2.2 | 0.25 | Sketch | 50.75 | 0.01058 | +10.18 |
+| 2.2.2.3 | 0.25 | Photo | 79.88 | 0.00467 | -15.99 |
 
 #### 2.2.3 - ASH module after layer1.1.conv1
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.2.3.1 | 0.25 | Cartoon | ..... | ....... | ...... |
-| 2.2.3.2 | 0.25 | Sketch | ..... | ....... | ...... |
-| 2.2.3.3 | 0.25 | Photo | ..... | ....... | ...... |
+| 2.2.3.1 | 0.25 | Cartoon | 56.27 | 0.00986 | +01.75 |
+| 2.2.3.2 | 0.25 | Sketch | 37.69 | 0.01354 | -02.88 |
+| 2.2.3.3 | 0.25 | Photo | 88.14 | 0.00260 | -07.73 |
 
 #### 2.2.4 - ASH module after layer1.1.bn2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.2.4.1 | 0.25 | Cartoon | ..... | ....... | ...... |
-| 2.2.4.2 | 0.25 | Sketch | ..... | ....... | ...... |
-| 2.2.4.3 | 0.25 | Photo | ..... | ....... | ...... |
+| 2.2.4.1 | 0.25 | Cartoon | 51.96 | 0.01132 | -02.56 |
+| 2.2.4.2 | 0.25 | Sketch | 31.03 | 0.02062 | -09.54 |
+| 2.2.4.3 | 0.25 | Photo | 94.97 | 0.00147 | -00.90 |
 
 #### 2.2.5 - ASH module after layer1.1.bn2 and layer2.1.bn2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.2.5.1 | 0.25 | Cartoon | ..... | ....... | ...... |
-| 2.2.5.2 | 0.25 | Sketch | ..... | ....... | ...... |
-| 2.2.5.3 | 0.25 | Photo | ..... | ....... | ...... |
+| 2.2.5.1 | 0.25 | Cartoon | 40.02 | 0.01476 | -14.50 |
+| 2.2.5.2 | 0.25 | Sketch | 19.47 | 0.02663 | -21.10 |
+| 2.2.5.3 | 0.25 | Photo | 60.18 | 0.00933 | -35.69 |
 
 #### Average improvements
 
 | Experiment | Placement | Avg Improvement |
 | :---: | :---: | :---: |
-| 2.2.1 | layer2.1.conv2 | ...... |
-| 2.2.2 | layer1.1.bn1, layer2.1.conv2 | ...... |
-| 2.2.3 | layer1.1.conv1 | ...... |
-| 2.2.4 | layer1.1.bn2 | ...... |
-| 2.2.5 | layer1.1.bn2 and layer2.1.bn2 | ...... |
+| 2.2.1 | layer2.1.conv2 | +01.58 |
+| 2.2.2 | layer1.1.bn1, layer2.1.conv2 | -02.16 |
+| 2.2.3 | layer1.1.conv1 | -2.96 |
+| 2.2.4 | layer1.1.bn2 | -04.33 |
+| 2.2.5 | layer1.1.bn2 and layer2.1.bn2 | -23.76 |
 
 ### 2.3 - mor = 0.50
 
@@ -750,24 +750,24 @@ We choose experiments with an average improvement better than -18.00.
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.3.1.1 | 0.50 | Cartoon | ..... | ....... | ...... |
-| 2.3.1.2 | 0.50 | Sketch | ..... | ....... | ...... |
-| 2.3.1.3 | 0.50 | Photo | ..... | ....... | ...... |
+| 2.3.1.1 | 0.50 | Cartoon | 59.30 | 0.00878 | +04.78 |
+| 2.3.1.2 | 0.50 | Sketch | 49.43 | 0.01130 | +08.86 |
+| 2.3.1.3 | 0.50 | Photo | 88.80 | 0.00274 | -07.07 |
 
 #### 2.3.2 - ASH module after layer1.1.bn1 and layer2.1.conv2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.3.2.1 | 0.50 | Cartoon | ..... | ....... | ...... |
-| 2.3.2.2 | 0.50 | Sketch | ..... | ....... | ...... |
-| 2.3.2.3 | 0.50 | Photo | ..... | ....... | ...... |
+| 2.3.2.1 | 0.50 | Cartoon | 56.40 | 0.00951 | +01.88 |
+| 2.3.2.2 | 0.50 | Sketch | 47.40 | 0.01103 | +06.83 |
+| 2.3.2.3 | 0.50 | Photo | 85.99 | 0.00319 | -09.88 |
 
 #### 2.3.3 - ASH module after layer1.1.conv1
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.3.3.1 | 0.50 | Cartoon | ..... | ....... | ...... |
-| 2.3.3.2 | 0.50 | Sketch | ..... | ....... | ...... |
+| 2.3.3.1 | 0.50 | Cartoon | 55.55 | 0.00982 | +01.03 |
+| 2.3.3.2 | 0.50 | Sketch | 37.97 | 0.01230 | -02.60 |
 | 2.3.3.3 | 0.50 | Photo | ..... | ....... | ...... |
 
 #### 2.3.4 - ASH module after layer1.1.bn2
@@ -790,8 +790,8 @@ We choose experiments with an average improvement better than -18.00.
 
 | Experiment | Placement | Avg Improvement |
 | :---: | :---: | :---: |
-| 2.3.1 | layer2.1.conv2 | ...... |
-| 2.3.2 | layer1.1.bn1, layer2.1.conv2 | ...... |
+| 2.3.1 | layer2.1.conv2 | +02.19 |
+| 2.3.2 | layer1.1.bn1, layer2.1.conv2 | -00.39 |
 | 2.3.3 | layer1.1.conv1 | ...... |
 | 2.3.4 | layer1.1.bn2 | ...... |
 | 2.3.5 | layer1.1.bn2 and layer2.1.bn2 | ...... |
@@ -802,51 +802,51 @@ We choose experiments with an average improvement better than -18.00.
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.4.1.1 | 0.75 | Cartoon | ..... | ....... | ...... |
-| 2.4.1.2 | 0.75 | Sketch | ..... | ....... | ...... |
-| 2.4.1.3 | 0.75 | Photo | ..... | ....... | ...... |
+| 2.4.1.1 | 0.75 | Cartoon | 55.67 | 0.00977 | +01.15 |
+| 2.4.1.2 | 0.75 | Sketch | 43.70 | 0.01256 | +03.13 |
+| 2.4.1.3 | 0.75 | Photo | 91.08 | 0.00212 | -04.79 |
 
 #### 2.4.2 - ASH module after layer1.1.bn1 and layer2.1.conv2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.4.2.1 | 0.75 | Cartoon | ..... | ....... | ...... |
-| 2.4.2.2 | 0.75 | Sketch | ..... | ....... | ...... |
-| 2.4.2.3 | 0.75 | Photo | ..... | ....... | ...... |
+| 2.4.2.1 | 0.75 | Cartoon | 54.78 | 0.00979 | +00.26 |
+| 2.4.2.2 | 0.75 | Sketch | 33.77 | 0.01219 | -06.80 |
+| 2.4.2.3 | 0.75 | Photo | 88.14 | 0.00280 | -07.73 |
 
 #### 2.4.3 - ASH module after layer1.1.conv1
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.4.3.1 | 0.75 | Cartoon | ..... | ....... | ...... |
-| 2.4.3.2 | 0.75 | Sketch | ..... | ....... | ...... |
-| 2.4.3.3 | 0.75 | Photo | ..... | ....... | ...... |
+| 2.4.3.1 | 0.75 | Cartoon | 50.94 | 0.01067 | -03.58 |
+| 2.4.3.2 | 0.75 | Sketch | 29.65 | 0.01336 | -10.92 |
+| 2.4.3.3 | 0.75 | Photo | 81.98 | 0.00404 | -13.89 |
 
 #### 2.4.4 - ASH module after layer1.1.bn2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.4.4.1 | 0.75 | Cartoon | ..... | ....... | ...... |
-| 2.4.4.2 | 0.75 | Sketch | ..... | ....... | ...... |
-| 2.4.4.3 | 0.75 | Photo | ..... | ....... | ...... |
+| 2.4.4.1 | 0.75 | Cartoon | 52.69 | 0.01148 | -01.83 |
+| 2.4.4.2 | 0.75 | Sketch | 31.46 | 0.02057 | -09.11 |
+| 2.4.4.3 | 0.75 | Photo | 92.69 | 0.00174 | -03.18 |
 
 #### 2.4.5 - ASH module after layer1.1.bn2 and layer2.1.bn2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.4.5.1 | 0.75 | Cartoon | ..... | ....... | ...... |
-| 2.4.5.2 | 0.75 | Sketch | ..... | ....... | ...... |
-| 2.4.5.3 | 0.75 | Photo | ..... | ....... | ...... |
+| 2.4.5.1 | 0.75 | Cartoon | 42.92 | 0.01389 | -11.60 |
+| 2.4.5.2 | 0.75 | Sketch | 28.30 | 0.02254 | -12.27 |
+| 2.4.5.3 | 0.75 | Photo | 88.74 | 0.00249 | -07.13 |
 
 #### Average improvements
 
 | Experiment | Placement | Avg Improvement |
 | :---: | :---: | :---: |
-| 2.4.1 | layer2.1.conv2 | ...... |
-| 2.4.2 | layer1.1.bn1, layer2.1.conv2 | ...... |
-| 2.4.3 | layer1.1.conv1 | ...... |
-| 2.4.4 | layer1.1.bn2 | ...... |
-| 2.4.5 | layer1.1.bn2 and layer2.1.bn2 | ...... |
+| 2.4.1 | layer2.1.conv2 | -00.17 |
+| 2.4.2 | layer1.1.bn1, layer2.1.conv2 | -04.76 |
+| 2.4.3 | layer1.1.conv1 | -09.46 |
+| 2.4.4 | layer1.1.bn2 | -04.71 |
+| 2.4.5 | layer1.1.bn2 and layer2.1.bn2 | -10.33 |
 
 ### 2.5 - mor = 1.00
 
@@ -854,17 +854,17 @@ We choose experiments with an average improvement better than -18.00.
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.5.1.1 | 1.00 | Cartoon | ..... | ....... | ...... |
-| 2.5.1.2 | 1.00 | Sketch | ..... | ....... | ...... |
-| 2.5.1.3 | 1.00 | Photo | ..... | ....... | ...... |
+| 2.5.1.1 | 1.00 | Cartoon | 16.64 | 0.13514 | -37.88 |
+| 2.5.1.2 | 1.00 | Sketch | 19.65 | 0.13187 | -20.92 |
+| 2.5.1.3 | 1.00 | Photo | 11.50 | 0.14474 | -84.37 |
 
 #### 2.5.2 - ASH module after layer1.1.bn1 and layer2.1.conv2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.5.2.1 | 1.00 | Cartoon | ..... | ....... | ...... |
-| 2.5.2.2 | 1.00 | Sketch | ..... | ....... | ...... |
-| 2.5.2.3 | 1.00 | Photo | ..... | ....... | ...... |
+| 2.5.2.1 | 1.00 | Cartoon | 16.60 | 9.09029 | -37.92 |
+| 2.5.2.2 | 1.00 | Sketch | 19.65 | 7.46906 | -20.92 |
+| 2.5.2.3 | 1.00 | Photo | 11.32 | 9.86020 | -84.55 |
 
 #### 2.5.3 - ASH module after layer1.1.conv1
 
@@ -894,8 +894,60 @@ We choose experiments with an average improvement better than -18.00.
 
 | Experiment | Placement | Avg Improvement |
 | :---: | :---: | :---: |
-| 2.5.1 | layer2.1.conv2 | ...... |
-| 2.5.2 | layer1.1.bn1, layer2.1.conv2 | ...... |
+| 2.5.1 | layer2.1.conv2 | -47.72 |
+| 2.5.2 | layer1.1.bn1, layer2.1.conv2 | -47.80 |
 | 2.5.3 | layer1.1.conv1 | ...... |
 | 2.5.4 | layer1.1.bn2 | ...... |
 | 2.5.5 | layer1.1.bn2 and layer2.1.bn2 | ...... |
+
+## 3 - Adapting Activation Maps Across Domains
+
+#### 3.1 - ASH module after layer2.1.conv2
+
+| Experiment | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: |
+| 3.1.1 | Cartoon | ..... | ....... | ...... |
+| 3.1.2 | Sketch | ..... | ....... | ...... |
+| 3.1.3 | Photo | ..... | ....... | ...... |
+
+#### 3.2 - ASH module after layer1.1.bn1 and layer2.1.conv2
+
+| Experiment | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: |
+| 3.2.1 | Cartoon | ..... | ....... | ...... |
+| 3.2.2 | Sketch | ..... | ....... | ...... |
+| 3.2.3 | Photo | ..... | ....... | ...... |
+
+#### 3.3 - ASH module after layer1.1.conv1
+
+| Experiment | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: |
+| 3.3.1 | Cartoon | ..... | ....... | ...... |
+| 3.3.2 | Sketch | ..... | ....... | ...... |
+| 3.3.3 | Photo | ..... | ....... | ...... |
+
+#### 3.4 - ASH module after layer1.1.bn2
+
+| Experiment | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: |
+| 3.4.1 | Cartoon | ..... | ....... | ...... |
+| 3.4.2 | Sketch | ..... | ....... | ...... |
+| 3.4.3 | Photo | ..... | ....... | ...... |
+
+#### 3.5 - ASH module after layer1.1.bn2 and layer2.1.bn2
+
+| Experiment | Target | Accuracy | Loss | Improvement |
+| :---: | :---: | :---: | :---: | :---: |
+| 3.5.1 | Cartoon | ..... | ....... | ...... |
+| 3.5.2 | Sketch | ..... | ....... | ...... |
+| 3.5.3 | Photo | ..... | ....... | ...... |
+
+#### Average improvements
+
+| Experiment | Placement | Avg Improvement |
+| :---: | :---: | :---: |
+| 3.1 | layer2.1.conv2 | ...... |
+| 3.2 | layer1.1.bn1, layer2.1.conv2 | ...... |
+| 3.3 | layer1.1.conv1 | ...... |
+| 3.4 | layer1.1.bn2 | ...... |
+| 3.5 | layer1.1.bn2 and layer2.1.bn2 | ...... |

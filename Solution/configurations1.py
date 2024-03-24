@@ -3055,6 +3055,7 @@ configurations = {
         'num_workers': 5,
         'grad_accum_steps': 1
     },
+
     #### 2.3 - MASK OUT RATIO = 0.50 ####
     ### 2.3.1 - ASH MODULE AFTER layer2.1.conv2 ###
     "2.3.1.1" : { # Art Painting -> Cartoon
@@ -3256,6 +3257,7 @@ configurations = {
         'num_workers': 5,
         'grad_accum_steps': 1
     },
+
     #### 2.4 - MASK OUT RATIO = 0.75 ####
     ### 2.4.1 - ASH MODULE AFTER layer2.1.conv2 ###
     "2.4.1.1" : { # Art Painting -> Cartoon
@@ -3457,6 +3459,7 @@ configurations = {
         'num_workers': 5,
         'grad_accum_steps': 1
     },
+
     #### 2.5 - MASK OUT RATIO = 1.00 ####
     ### 2.5.1 - ASH MODULE AFTER layer2.1.conv2 ###
     "2.5.1.1" : { # Art Painting -> Cartoon
@@ -3652,6 +3655,208 @@ configurations = {
         'experiment': 'random',
         'experiment_name': '2.5.5.3',
         'experiment_args': {'module_placement': ['layer1.1.bn2', 'layer2.1.bn2'], 'mask_out_ratio': 1.00},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'photo' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+
+    ##### 3 - ADAPTING ACTIVATION MAPS ACROSS DOMAINS #####
+    #### 3.1 - ASH MODULE AFTER layer2.1.conv2 ####
+    "3.1.1" : { # Art Painting -> Cartoon
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.1.1',
+        'experiment_args': {'module_placement': ['layer2.1.conv2']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'cartoon' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    "3.1.2" : { # Art Painting -> Sketch
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.1.2',
+        'experiment_args': {'module_placement': ['layer2.1.conv2']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'sketch' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    "3.1.3" : { # Art Painting -> Photo
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.1.3',
+        'experiment_args': {'module_placement': ['layer2.1.conv2']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'photo' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    #### 3.2 - ASH MODULE AFTER layer1.1.bn1 AND layer2.1.conv2 ####
+    "3.2.1" : { # Art Painting -> Cartoon
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.2.1',
+        'experiment_args': {'module_placement': ['layer1.1.bn1', 'layer2.1.conv2']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'cartoon' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    "3.2.2" : { # Art Painting -> Sketch
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.2.2',
+        'experiment_args': {'module_placement': ['layer1.1.bn1', 'layer2.1.conv2']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'sketch' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    "3.2.3" : { # Art Painting -> Photo
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.2.3',
+        'experiment_args': {'module_placement': ['layer1.1.bn1', 'layer2.1.conv2']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'photo' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    #### 3.3 - ASH MODULE AFTER layer1.1.conv1 ####
+    "3.3.1" : { # Art Painting -> Cartoon
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.3.1',
+        'experiment_args': {'module_placement': ['layer1.1.conv1']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'cartoon' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    "3.3.2" : { # Art Painting -> Sketch
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.3.2',
+        'experiment_args': {'module_placement': ['layer1.1.conv1']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'sketch' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    "3.3.3" : { # Art Painting -> Photo
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.3.3',
+        'experiment_args': {'module_placement': ['layer1.1.conv1']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'photo' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    #### 3.4 - ASH MODULE AFTER layer1.1.bn2 ####
+    "3.4.1" : { # Art Painting -> Cartoon
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.4.1',
+        'experiment_args': {'module_placement': ['layer1.1.bn2']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'cartoon' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    "3.4.2" : { # Art Painting -> Sketch
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.4.2',
+        'experiment_args': {'module_placement': ['layer1.1.bn2']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'sketch' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    "3.4.3" : { # Art Painting -> Photo
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.4.3',
+        'experiment_args': {'module_placement': ['layer1.1.bn2']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'photo' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    #### 3.5 - ASH MODULE AFTER layer1.1.bn2 AND layer2.1.bn2 ####
+    "3.5.1" : { # Art Painting -> Cartoon
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.5.1',
+        'experiment_args': {'module_placement': ['layer1.1.bn2', 'layer2.1.bn2']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'cartoon' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    "3.5.2" : { # Art Painting -> Sketch
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.5.2',
+        'experiment_args': {'module_placement': ['layer1.1.bn2', 'layer2.1.bn2']},
+        'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'sketch' },
+        'batch_size': 128,
+        'epochs': 30,
+        'num_workers': 5,
+        'grad_accum_steps': 1
+    },
+    "3.5.3" : { # Art Painting -> Photo
+        'seed': 0,
+        'test_only': False,
+        'cpu': False,
+        'experiment': 'domain_adaptation',
+        'experiment_name': '3.5.3',
+        'experiment_args': {'module_placement': ['layer1.1.bn2', 'layer2.1.bn2']},
         'dataset_args': {'text_root': 'data', 'images_root': 'data/kfold/PACS', 'source_domain': 'art_painting', 'target_domain': 'photo' },
         'batch_size': 128,
         'epochs': 30,
