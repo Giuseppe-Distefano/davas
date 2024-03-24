@@ -83,6 +83,6 @@ def top_k_subsections (k):
 # Main of the program
 if __name__=='__main__':
     import_data()
-    show_avg_improvements()
+    #show_avg_improvements()
     #show_improvements()
-    #top_k_subsections(5)
+    top_k_subsections(5)
