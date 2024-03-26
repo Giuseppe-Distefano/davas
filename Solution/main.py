@@ -86,14 +86,20 @@ def train(model, data):
                     # Randomly turn off some outputs of each layer 
                     module_placement = CONFIG.experiment_args['module_placement']
                     mask_out_ratio = CONFIG.experiment_args['mask_out_ratio']
-                    model.register_random_activation_maps_hooks(module_placement, mask_out_ratio)
+                    if ('extension' in CONFIG.experiment_args) and (CONFIG.experiment_args['extension'] == 'no_binarization'):
+                        model.register_random_activation_maps_hooks(module_placement, mask_out_ratio, binarize=False)
+                    else:
+                        model.register_random_activation_maps_hooks(module_placement, mask_out_ratio)
                     loss = F.cross_entropy(model(x), y)
                     model.remove_random_activation_maps_hooks()
                 elif CONFIG.experiment in ['domain_adaptation']:
                     src_x, src_y, targ_x = batch
                     src_x, src_y = src_x.to(CONFIG.device), src_y.to(CONFIG.device)
                     # Register the Activation Shaping hook(s) and perform a forward pass (source domain images)
-                    model.register_activation_shaping_hooks()
+                    if ('extension' in CONFIG.experiment_args) and (CONFIG.experiment_args['extension'] == 'no_binarization'):
+                        model.register_activation_shaping_hooks(binarize=False)
+                    else:
+                        model.register_activation_shaping_hooks()
                     loss = F.cross_entropy(model(src_x), src_y)
                     model.remove_activation_shaping_hooks()
 
