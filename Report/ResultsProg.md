@@ -768,23 +768,23 @@ We choose experiments with an average improvement better than -18.00.
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | 2.3.3.1 | 0.50 | Cartoon | 55.55 | 0.00982 | +01.03 |
 | 2.3.3.2 | 0.50 | Sketch | 37.97 | 0.01230 | -02.60 |
-| 2.3.3.3 | 0.50 | Photo | ..... | ....... | ...... |
+| 2.3.3.3 | 0.50 | Photo | 87.72 | 0.00264 | -08.15 |
 
 #### 2.3.4 - ASH module after layer1.1.bn2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.3.4.1 | 0.50 | Cartoon | ..... | ....... | ...... |
-| 2.3.4.2 | 0.50 | Sketch | ..... | ....... | ...... |
-| 2.3.4.3 | 0.50 | Photo | ..... | ....... | ...... |
+| 2.3.4.1 | 0.50 | Cartoon | 53.84 | 0.01108 | -00.68 |
+| 2.3.4.2 | 0.50 | Sketch | 31.84 | 0.02037 | -08.73 |
+| 2.3.4.3 | 0.50 | Photo | 95.39 | 0.00127 | -00.48 |
 
 #### 2.3.5 - ASH module after layer1.1.bn2 and layer2.1.bn2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.3.5.1 | 0.50 | Cartoon | ..... | ....... | ...... |
-| 2.3.5.2 | 0.50 | Sketch | ..... | ....... | ...... |
-| 2.3.5.3 | 0.50 | Photo | ..... | ....... | ...... |
+| 2.3.5.1 | 0.50 | Cartoon | 47.48 | 0.01310 | -07.04 |
+| 2.3.5.2 | 0.50 | Sketch | 26.24 | 0.02575 | -14.33 |
+| 2.3.5.3 | 0.50 | Photo | 80.54 | 0.00418 | -15.33 |
 
 #### Average improvements
 
@@ -792,9 +792,9 @@ We choose experiments with an average improvement better than -18.00.
 | :---: | :---: | :---: |
 | 2.3.1 | layer2.1.conv2 | +02.19 |
 | 2.3.2 | layer1.1.bn1, layer2.1.conv2 | -00.39 |
-| 2.3.3 | layer1.1.conv1 | ...... |
-| 2.3.4 | layer1.1.bn2 | ...... |
-| 2.3.5 | layer1.1.bn2 and layer2.1.bn2 | ...... |
+| 2.3.3 | layer1.1.conv1 | -03.24 |
+| 2.3.4 | layer1.1.bn2 | -03.30 |
+| 2.3.5 | layer1.1.bn2 and layer2.1.bn2 | -12.23 |
 
 ### 2.4 - mor = 0.75
 
@@ -870,25 +870,25 @@ We choose experiments with an average improvement better than -18.00.
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.5.3.1 | 1.00 | Cartoon | ..... | ....... | ...... |
-| 2.5.3.2 | 1.00 | Sketch | ..... | ....... | ...... |
-| 2.5.3.3 | 1.00 | Photo | ..... | ....... | ...... |
+| 2.5.3.1 | 1.00 | Cartoon | 16.60 | 2.68424 | -37.92 |
+| 2.5.3.2 | 1.00 | Sketch | 19.65 | 2.67450 | -20.92 |
+| 2.5.3.3 | 1.00 | Photo | 11.32 | 2.09453 | -84.55 |
 
 #### 2.5.4 - ASH module after layer1.1.bn2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.5.4.1 | 1.00 | Cartoon | ..... | ....... | ...... |
-| 2.5.4.2 | 1.00 | Sketch | ..... | ....... | ...... |
-| 2.5.4.3 | 1.00 | Photo | ..... | ....... | ...... |
+| 2.5.4.1 | 1.00 | Cartoon | 45.61 | 0.01396 | -08.91 |
+| 2.5.4.2 | 1.00 | Sketch | 27.23 | 0.01718 | -13.34 |
+| 2.5.4.3 | 1.00 | Photo | 80.60 | 0.00627 | -15.20 |
 
 #### 2.5.5 - ASH module after layer1.1.bn2 and layer2.1.bn2
 
 | Experiment | Mask out ratio | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 2.5.5.1 | 1.00 | Cartoon | ..... | ....... | ...... |
-| 2.5.5.2 | 1.00 | Sketch | ..... | ....... | ...... |
-| 2.5.5.3 | 1.00 | Photo | ..... | ....... | ...... |
+| 2.5.5.1 | 1.00 | Cartoon | 30.55 | 0.01757 | -23.97 |
+| 2.5.5.2 | 1.00 | Sketch | 21.33 | 0.02060 | -19.24 |
+| 2.5.5.3 | 1.00 | Photo | 57.54 | 0.01128 | -38.33 |
 
 #### Average improvements
 
@@ -896,9 +896,19 @@ We choose experiments with an average improvement better than -18.00.
 | :---: | :---: | :---: |
 | 2.5.1 | layer2.1.conv2 | -47.72 |
 | 2.5.2 | layer1.1.bn1, layer2.1.conv2 | -47.80 |
-| 2.5.3 | layer1.1.conv1 | ...... |
-| 2.5.4 | layer1.1.bn2 | ...... |
-| 2.5.5 | layer1.1.bn2 and layer2.1.bn2 | ...... |
+| 2.5.3 | layer1.1.conv1 | -47.80 |
+| 2.5.4 | layer1.1.bn2 | -12.48 |
+| 2.5.5 | layer1.1.bn2 and layer2.1.bn2 | -27.18 |
+
+### Average improvements
+
+| Placement | Improvement |
+| :---: | :---: |
+| **layer2.1.conv2** | -15.88 |
+| layer1.1.bn1, layer2.1.conv2 | -21.56 |
+| layer1.1.conv1 | -23.39 |
+| **layer1.1.bn2** | -10.91 |
+| layer1.1.bn2 and layer2.1.bn2 | -36.24 |
 
 ## 3 - Adapting Activation Maps Across Domains
 
@@ -906,48 +916,21 @@ We choose experiments with an average improvement better than -18.00.
 
 | Experiment | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: |
-| 3.1.1 | Cartoon | ..... | ....... | ...... |
-| 3.1.2 | Sketch | ..... | ....... | ...... |
-| 3.1.3 | Photo | ..... | ....... | ...... |
+| 3.1.1 | Cartoon | 55.42 | 0.00968 | +01.00 |
+| 3.1.2 | Sketch | 39.63 | 0.01254 | -00.94 |
+| 3.1.3 | Photo | 89.70 | 0.00236 | -06.17 |
 
-#### 3.2 - ASH module after layer1.1.bn1 and layer2.1.conv2
-
-| Experiment | Target | Accuracy | Loss | Improvement |
-| :---: | :---: | :---: | :---: | :---: |
-| 3.2.1 | Cartoon | ..... | ....... | ...... |
-| 3.2.2 | Sketch | ..... | ....... | ...... |
-| 3.2.3 | Photo | ..... | ....... | ...... |
-
-#### 3.3 - ASH module after layer1.1.conv1
+#### 3.2 - ASH module after layer1.1.bn2
 
 | Experiment | Target | Accuracy | Loss | Improvement |
 | :---: | :---: | :---: | :---: | :---: |
-| 3.3.1 | Cartoon | ..... | ....... | ...... |
-| 3.3.2 | Sketch | ..... | ....... | ...... |
-| 3.3.3 | Photo | ..... | ....... | ...... |
-
-#### 3.4 - ASH module after layer1.1.bn2
-
-| Experiment | Target | Accuracy | Loss | Improvement |
-| :---: | :---: | :---: | :---: | :---: |
-| 3.4.1 | Cartoon | ..... | ....... | ...... |
-| 3.4.2 | Sketch | ..... | ....... | ...... |
-| 3.4.3 | Photo | ..... | ....... | ...... |
-
-#### 3.5 - ASH module after layer1.1.bn2 and layer2.1.bn2
-
-| Experiment | Target | Accuracy | Loss | Improvement |
-| :---: | :---: | :---: | :---: | :---: |
-| 3.5.1 | Cartoon | ..... | ....... | ...... |
-| 3.5.2 | Sketch | ..... | ....... | ...... |
-| 3.5.3 | Photo | ..... | ....... | ...... |
+| 3.2.1 | Cartoon | 51.71 | 0.01146 | -02.81 |
+| 3.2.2 | Sketch | 31.61 | 0.02015 | -08.96 |
+| 3.2.3 | Photo | 95.15 | 0.00137 | -00.72 |
 
 #### Average improvements
 
 | Experiment | Placement | Avg Improvement |
 | :---: | :---: | :---: |
-| 3.1 | layer2.1.conv2 | ...... |
-| 3.2 | layer1.1.bn1, layer2.1.conv2 | ...... |
-| 3.3 | layer1.1.conv1 | ...... |
-| 3.4 | layer1.1.bn2 | ...... |
-| 3.5 | layer1.1.bn2 and layer2.1.bn2 | ...... |
+| 3.1 | layer2.1.conv2 | -02.04 |
+| 3.2 | layer1.1.bn2 | -04.16 |
