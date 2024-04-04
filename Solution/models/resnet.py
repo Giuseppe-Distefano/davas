@@ -46,6 +46,7 @@ class ASHResNet18(nn.Module):
         
         return random_activation_map_hook
 
+    
     def get_random_activation_map_hook_no_binarization(self, mask_out_ratio):
         
         # do not binarize the activation map produced by the current layer.
@@ -64,6 +65,7 @@ class ASHResNet18(nn.Module):
         
         return random_activation_map_hook_no_binarization
 
+    
     def register_random_activation_maps_hooks(self, module_placement, mask_out_ratio, binarize=True):
         for layer_name, module in self.resnet.named_modules():
             if ((isinstance(module, nn.ReLU) or isinstance(module, nn.Conv2d) or isinstance(module, nn.BatchNorm2d))):
@@ -75,11 +77,13 @@ class ASHResNet18(nn.Module):
                         hook = self.get_random_activation_map_hook_no_binarization(mask_out_ratio)
                     self.hook_handles[layer_name] = module.register_forward_hook(hook)
 
+    
     def remove_random_activation_maps_hooks(self):
         for layer_name, handle in self.hook_handles.items():
             print('Remove the hook used to perform Activation Shaping on layer ', layer_name)
             handle.remove()
 
+    
     def forward(self, x):
         return self.resnet(x)
     
@@ -143,12 +147,14 @@ class DAResNet18(nn.Module):
                     hook = self.get_extract_activation_map_hook(layer_name)
                     self.activation_map_hook_handles[layer_name] = module.register_forward_hook(hook)
 
+    
     def remove_extract_activation_map_hooks(self):
         # Remove hook(s) used to store activation map
         for layer_name, handle in self.activation_map_hook_handles.items():
             print('Remove the hook used to store activation map of layer ', layer_name)
             handle.remove()
             
+    
     def register_activation_shaping_hooks(self, binarize=True):
         # Register the Activation Shaping Module hook(s) (2nd hook)
         for layer_name, module in self.resnet.named_modules():
@@ -161,12 +167,13 @@ class DAResNet18(nn.Module):
                         hook = self.get_activation_shaping_hook_no_binarization(self.activation_maps[layer_name])
                     self.activation_shaping_hook_handles[layer_name] = module.register_forward_hook(hook)
 
+    
     def remove_activation_shaping_hooks(self):
         # Remove hook(s) used to perform Activation Shaping
         for layer_name, handle in self.activation_shaping_hook_handles.items():
             print('Remove the hook used to perform Activation Shaping on layer ', layer_name)
             handle.remove()
     
+    
     def forward(self, x):
         return self.resnet(x)
-    
