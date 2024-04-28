@@ -88,6 +88,9 @@ def train(model, data):
                     mask_out_ratio = CONFIG.experiment_args['mask_out_ratio']
                     if ('extension' in CONFIG.experiment_args) and (CONFIG.experiment_args['extension'] == 'no_binarization'):
                         model.register_random_activation_maps_hooks(module_placement, mask_out_ratio, binarize=False)
+                    elif ('extension' in CONFIG.experiment_args) and (CONFIG.experiment_args['extension'] == 'top_k') and ('k_values' in CONFIG.experiment_args):
+                        model.register_random_activation_maps_hooks(module_placement, mask_out_ratio, binarize=False, 
+                                                                    top_k=True, k_values=CONFIG.experiment_args['k_values'])
                     else:
                         model.register_random_activation_maps_hooks(module_placement, mask_out_ratio)
                     loss = F.cross_entropy(model(x), y)
@@ -155,17 +158,11 @@ def main ():
     # Load model
     if CONFIG.experiment in ['baseline']:
         model = BaseResNet18()
-
-    ######################################################
-
     elif CONFIG.experiment in ['random']:
         model = ASHResNet18()
-
     elif CONFIG.experiment in ['domain_adaptation']:
         # module_placement = CONFIG.experiment_args['module_placement']
         model = DAResNet18()
-
-    ######################################################
 
     model.to(CONFIG.device)
 
