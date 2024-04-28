@@ -908,7 +908,7 @@ We choose experiments with an average improvement better than -18.00.
 | layer1.1.bn1, layer2.1.conv2 | -21.56 |
 | layer1.1.conv1 | -23.39 |
 | **layer1.1.bn2** | -10.91 |
-| layer1.1.bn2 and layer2.1.bn2 | -36.24 |
+| layer1.1.bn2, layer2.1.bn2 | -36.24 |
 
 ## 3 - Adapting Activation Maps Across Domains
 
