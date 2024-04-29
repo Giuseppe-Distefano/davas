@@ -101,6 +101,8 @@ def train(model, data):
                     # Register the Activation Shaping hook(s) and perform a forward pass (source domain images)
                     if ('extension' in CONFIG.experiment_args) and (CONFIG.experiment_args['extension'] == 'no_binarization'):
                         model.register_activation_shaping_hooks(binarize=False)
+                    elif ('extension' in CONFIG.experiment_args) and (CONFIG.experiment_args['extension'] == 'top_k') and ('k_values' in CONFIG.experiment_args):
+                        model.register_activation_shaping_hooks(binarize=False, top_k=True, k_values=CONFIG.experiment_args['k_values'])
                     else:
                         model.register_activation_shaping_hooks()
                     loss = F.cross_entropy(model(src_x), src_y)
