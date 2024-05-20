@@ -83,8 +83,12 @@ class ASHResNet18(nn.Module):
             
             A = output.detach()
             A_flat = A.reshape(*A.shape[:-2],-1)
+            # Compute the actual value of k given the shape of the activation map
+            actual_k_value = int(k*A_flat.shape[-1])
+            print(f'actual_k_value: {actual_k_value}')
+
             # If largest is False then the k smallest elements are returned.
-            _, indices = torch.topk(A_flat, k=A_flat.shape[-1] -k, largest=False)
+            _, indices = torch.topk(A_flat, k=A_flat.shape[-1] - actual_k_value, largest=False)
             
             # Set all the elements of M that are not in the Top K to zero
             M_flat = mask.reshape(*mask.shape[:-2],-1)
@@ -92,8 +96,9 @@ class ASHResNet18(nn.Module):
             M = M_flat.reshape(*mask.shape)
             
             # return the element-wise product of activation map and mask
-            shaped_output = A * M
-            return shaped_output
+            # shaped_output = A * M
+            return output * M
+            # return shaped_output
         
         return random_activation_map_hook_top_k
     
@@ -187,8 +192,11 @@ class DAResNet18(nn.Module):
             
             A = output.detach()
             A_flat = A.reshape(*A.shape[:-2],-1)
+            # Compute the actual value of k given the shape of the activation map
+            actual_k_value = int(k*A_flat.shape[-1])
+            print(f'actual_k_value: {actual_k_value}')
             # If largest is False then the k smallest elements are returned.
-            _, indices = torch.topk(A_flat, k=A_flat.shape[-1] -k, largest=False)
+            _, indices = torch.topk(A_flat, k=A_flat.shape[-1] - actual_k_value, largest=False)
             
             # Set all the elements of M that are not in the Top K to zero
             M_flat = M_binary.reshape(*M_binary.shape[:-2],-1)
@@ -196,8 +204,9 @@ class DAResNet18(nn.Module):
             M = M_flat.reshape(*M_binary.shape)
             
             # return the element-wise product of activation map and mask
-            shaped_output = A * M
-            return shaped_output
+            # shaped_output = A * M
+            return output * M
+            # return shaped_output
         
         return activation_shaping_hook_top_k
     
